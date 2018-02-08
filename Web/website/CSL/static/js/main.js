@@ -41,7 +41,7 @@
     /* ========================================================================= */
     /*   Contact Form Validating
     /* ========================================================================= */
-
+/*
     $('#contact-form').validate({
         rules: {
             name: {
@@ -82,10 +82,9 @@
             );
         }
     });
-
+*/
 
 }(jQuery));
-
 
 
 jQuery(document).ready(function(){
@@ -115,7 +114,7 @@ $(document).ready(function(){
     });
 
     $("#clients-logo").owlCarousel({
- 
+
         itemsCustom : false,
         pagination : false,
         items : 5,
@@ -140,8 +139,8 @@ $(".fancybox").fancybox({
 
     closeClick : true,
     helpers : {
-        title : { 
-            type: 'inside' 
+        title : {
+            type: 'inside'
         },
         overlay : {
             css : {
@@ -150,14 +149,3 @@ $(".fancybox").fancybox({
         }
     }
 });
-
-
-
-
-
-
- 
-
-
-
-
