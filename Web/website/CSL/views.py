@@ -34,3 +34,27 @@ def mech_sys_tcers(request):
 
 def dynamic_data_mech(request):
     return render(request, 'CSL/template/dynamic-data-mech.html')
+    
+def lighting_sys_overview(request):
+    return render(request, 'CSL/template/lighting-sys-overview.html')
+
+def lighting_sys_dl(request):
+    return render(request, 'CSL/template/lighting-sys-daylighting.html')
+    
+def lighting_sys_al(request):
+    return render(request, 'CSL/template/lighting-sys-artificial.html')
+    
+def dynamic_data_lighting(request):
+    return render(request, 'CSL/template/dynamic-data-lighting.html')
+    
+def sys_diagram_mech(request):
+    return render(request, 'CSL/template/sys-diagram-mech.html')
+
+def sys_diagram_lighting(request):
+    return render(request, 'CSL/template/sys-diagram-lighting.html')
+    
+def sus_energy(request):
+    return render(request, 'CSL/template/sus-energy.html')
+    
+def sus_water(request):
+    return render(request, 'CSL/template/sus-water.html')
