@@ -167,6 +167,15 @@
                     <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">When the daylight is insufficient, either because of night or cloudy skies, LED and fluorescent lights are used. The plan of light fixture placement and the information for each fixture can be found on the System Diagram page of this website. Several steps are taken to reduce electricity usage and waste when these lights are used. Occupancy sensors throughout the floors turn the lights off when no one is in the room. Dimming ballasts allow lights to be dimmed to provide only as much light is needed. Using the lighting control system discussed in the next section, different sets of lights are programmed to ensure that they are used as effectively as possible.</p>
 
                     <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">The building generates its own electricity to power the artificial lighting to make it a net-zero energy use building. The building's impact on the environment is still minimized even when electrical lights instead of daylighting must be used, since the building uses renewable energy sources like solar panels. More information about the energy generation methods used to become net zero energy can be found in the ___ section of this website.</p>
+
+                    <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">General Operating and Control</h2>
+                    <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">The lighting and systems in CSL are monitored to ensure they work correctly and note areas of improvement. A web interface allows researchers and operators to view the conditions in the building and relevant statuses of the systems at any given point in time.  For example, an operator can view that the light is on even though the system is registering sufficient daylighting and start an observation of what may be malfunctioning in the building.</p>
+                    <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">A key quality of any automated building is ensuring comfort of the occupants. If the occupants do not feel that the automated system is providing for their needs, they will over-ride the system. For this reason, the automation system is programmed for occupant comfort as well as energy efficiency. The Building Automation System (BAS) can change the positions of the louvers, as well as adjust the HVAC system as necessary.</p>
+
+                    <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">Lighting Arrangement Programming</h2>
+                    <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">The lighting systems can be programmed in addition to being monitored. Two SpecGrade Dimming Panels are used to program the lighting arrangements for several of the main rooms in CSL (LIST OF ROOMS). The arrangements are room specific and represent a specific set of lights turned on at different settings to best accommodate a given use of the room. For example, a given room might have one set of lights that is most effective when it is being used for a conference, and a different set of lights for a presentation on a screen. This allows the most efficient lighting arrangements to be pre-determined, saving occupants' time and aiding better lighting usage.</p>
+                    <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">The scenes (arrangements) programmed in the dimming panels are linked to seeTouch wall stations in the rooms, each with two to four potential scenes. Occupants can then tap a button for which scene they want used, and the lighting will change accordingly.</p>
+
             </div>
             <div class="col-md-6">
                 <div class="block">
@@ -186,13 +195,13 @@
     <div class="container">
         <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">DETAILED FEATURES</h2>
             <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">
-                Aliquam lobortis. Maecenas vestibulum mollis diam. Pellentesque auctor neque nec urna. Nulla sit amet est. Aenean posuere <br> tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus.
+                Here are some features of the lighting system and controls with links to specifications and manufacturer's websites. For information about the particular lights used in the building and their locations, please see the Lighting System page under System Diagrams.
             </p>
         <div class="row">
             <div class="col-sm-3">
                  <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
                     <div class="img-wrapper">
-                        <img src="{% static 'images/lighting/EcoSysBallast_01_hero.png' %}" class="img-responsive" alt="this is a title" >
+                        <img src="{% static 'images/lighting/EcoSysBallast_01_hero.png' %}" class="img-responsive" alt="EcoSystem Ballast" height = "300">
                         <div class="overlay">
                             <div class="buttons">
                                 <a target="_blank" href="http://www.lutron.com/en-US/Products/Pages/FluorescentBallasts/EcoSystemBallasts/Overview.aspx">Details</a>
@@ -215,22 +224,21 @@
             <div class="col-sm-3">
                 <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="300ms">
                     <div class="img-wrapper">
-                        <img src="{% static 'images/mech/mech-geo-1.gif' %}" class="img-responsive" alt="this is a title" >
+                        <img src="{% static 'images/lighting/Dimming_Panel.png' %}" class="img-responsive" alt="" >
                         <div class="overlay">
                             <div class="buttons">
-                                <a rel="gallery" class="fancybox" href="{% static 'images/mech/mech-geo-1.gif' %}">Demo</a>
-                                <a target="_blank" href="">Details</a>
+                                <a target="_blank" href=""  http://www.lutron.com/TechnicalDocumentLibrary/LCP128-SpecGrade.pdf">Details</a>
                             </div>
                         </div>
                     </div>
                     <figcaption>
                         <h4>
                             <a href="#">
-                                Geothermal System
+                                SpecGrade Dimming Panel
                             </a>
                         </h4>
                         <p>
-                            Details about Geothermal System.
+                            The lighting arrangements are programmed with Lutron's LCP SpecGrade Dimming Panel. The model used in the CSL is LCP16, but a LCP128 model is linked to for more details due to lack of available information about the LCP16. After the lighting arrangements are programmed, they are accessible through the seeTouch panels.
                         </p>
                     </figcaption>
                 </figure>
@@ -239,50 +247,26 @@
             <div class="col-sm-3">
                 <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="300ms">
                     <div class="img-wrapper">
-                        <img src="{% static 'images/mech/mech-udfs.jpg' %}" class="img-responsive" alt="" >
+                        <img src="{% static 'images/lighting/seeTouch_picture.png' %}" class="img-responsive" alt="seeTouch" width = "150" height = "300">
                         <div class="overlay">
                             <div class="buttons">
-                                <a rel="gallery" class="fancybox" href="{% static 'images/mech/mech-udfs.jpg' %}">Demo</a>
-                                <a target="_blank" href="">Details</a>
+                                <a rel="gallery" class="fancybox" href="http://www.lutron.com/TechnicalDocumentLibrary/so-4s.pdf">Details</a>
                             </div>
                         </div>
                     </div>
                     <figcaption>
                         <h4>
                             <a href="#">
-                                UDFS
+                                seeTouch Lighting Control Panel
                             </a>
                         </h4>
                         <p>
-                            Details about Under-Floor Distribution System.
+                            The seeTouch panel can be used to select the desired lighting arrangement in select spaces in the CSL building.
                         </p>
                     </figcaption>
                 </figure>
             </div>
 
-            <div class="col-sm-3">
-                <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="600ms">
-                    <div class="img-wrapper">
-                        <img src="{% static 'images/mech/mech-tcers.jpg' %}" class="img-responsive" alt="" >
-                        <div class="overlay">
-                            <div class="buttons">
-                                <a rel="gallery" class="fancybox" href="{% static 'images/mech/mech-tcers.jpg' %}">Demo</a>
-                                <a target="_blank" href="">Details</a>
-                            </div>
-                        </div>
-                    </div>
-                    <figcaption>
-                        <h4>
-                            <a href="#">
-                                Energy-Recovery System
-                            </a>
-                        </h4>
-                        <p>
-                            Details about Tri-Coil Energy-Recovery System
-                        </p>
-                    </figcaption>
-                </figure>
-            </div>
         </div>
     </div>
 </section>
