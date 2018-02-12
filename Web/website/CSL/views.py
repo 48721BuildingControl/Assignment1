@@ -61,11 +61,9 @@ def sys_diagram_mech(request):
 def sys_diagram_lighting(request):
     return render(request, 'CSL/template/sys-diagram-lighting.html')
 
-def sus_energy(request):
-    return render(request, 'CSL/template/sus-energy.html')
+def sustainability(request):
+    return render(request, 'CSL/template/sustainability.html')
 
-def sus_water(request):
-    return render(request, 'CSL/template/sus-water.html')
 
 def getFromPi(url):
 	# Never check any hostnames
