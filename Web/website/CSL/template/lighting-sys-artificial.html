@@ -9,7 +9,7 @@
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link rel="icon" href="{% static 'images/soa_logo.png' %}">
-        <title> Overview - Lighting System </title>
+        <title> Artificial Lighting - Lighting System </title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="author" content="Chen-Xu">
@@ -157,23 +157,47 @@
             <div class="col-md-6">
                 <div class="block">
                     <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">Artifical Lighting System</h2>
-                    <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">When the daylight is insufficient, either because of night or cloudy skies, LED and fluorescent lights are used. The plan of light fixture placement and the information for each fixture can be found on the System Diagram page of this website. Several steps are taken to reduce electricity usage and waste when these lights are used. Occupancy sensors throughout the floors turn the lights off when no one is in the room. Dimming ballasts allow lights to be dimmed to provide only as much light is needed. Using the lighting control system discussed in the next section, different sets of lights are programmed to ensure that they are used as effectively as possible.</p>
-
-                    <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">The building generates its own electricity to power the artificial lighting to make it a net-zero energy use building. The building's impact on the environment is still minimized even when electrical lights instead of daylighting must be used, since the building uses renewable energy sources like solar panels. More information about the energy generation methods used to become net zero energy can be found in the ___ section of this website.</p>
+                    <ul class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms"><li style="list-style-type:disc">Used only when daylight isn't sufficient </li>
+                        <li style="list-style-type:disc">Primarily energy efficient lights like LED and fluorescent</li>
+                        <li style="list-style-type:disc">Occupancy sensors turn off lights when no one is using them </li>
+                        <li style="list-style-type:disc">Dimming ballasts ensure only enough electricity as is necessary is used </li>
+                        <li style="list-style-type:disc">Lighting control system ensures lights used effectively</li>
+                        <li style="list-style-type:disc">Making own electricity offsets electricity usage to make the building zero net energy</li>
+                    </ul>
 
                     <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">General Operating and Control</h2>
-                    <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">The lighting and systems in CSL are monitored to ensure they work correctly and note areas of improvement. A web interface allows researchers and operators to view the conditions in the building and relevant statuses of the systems at any given point in time.  For example, an operator can view that the light is on even though the system is registering sufficient daylighting and start an observation of what may be malfunctioning in the building.</p>
-                    <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">A key quality of any automated building is ensuring comfort of the occupants. If the occupants do not feel that the automated system is providing for their needs, they will over-ride the system. For this reason, the automation system is programmed for occupant comfort as well as energy efficiency. The Building Automation System (BAS) can change the positions of the louvers, as well as adjust the HVAC system as necessary.</p>
+
+                    <ul class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">
+                        <li style="list-style-type:disc">Systems are monitored to ensure they work correctly and find areas of improvement</li>
+                        <li style="list-style-type:disc">Web interface for monitoring conditions and equipment</li>
+                        <li style="list-style-type:disc">Can find malfunctions from contraditory system information</li>
+                        <li style="list-style-type:disc">System provides for comforts of occupants</li>
+                        <li style="list-style-type:disc">Occupants can override system when necessary</li>
+                        <li style="list-style-type:disc">System can increase energy efficiency and adjust louvers</li>
+                    </ul>
 
                     <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">Lighting Arrangement Programming</h2>
-                    <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">The lighting systems can be programmed in addition to being monitored. Two SpecGrade Dimming Panels are used to program the lighting arrangements for several of the main rooms in CSL (LIST OF ROOMS). The arrangements are room specific and represent a specific set of lights turned on at different settings to best accommodate a given use of the room. For example, a given room might have one set of lights that is most effective when it is being used for a conference, and a different set of lights for a presentation on a screen. This allows the most efficient lighting arrangements to be pre-determined, saving occupants' time and aiding better lighting usage.</p>
-                    <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">The scenes (arrangements) programmed in the dimming panels are linked to seeTouch wall stations in the rooms, each with two to four potential scenes. Occupants can then tap a button for which scene they want used, and the lighting will change accordingly.</p>
 
+                    <ul class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">
+                        <li style="list-style-type:disc">Two SpecGrade Dimming Panels allow programming of lighting arrangements in several main rooms</li>
+                        <li style="list-style-type:disc;">Arrangements are specific sets of lights in specific rooms to best accomodate a given use of the room</li>
+                        <li style="list-style-type:disc">Different lights can be used for having a conference versus a presentation</li>
+                        <li style="list-style-type:disc">Allows most efficient lighting arrangements to be pre-determined</li>
+                        <li style="list-style-type:disc">Arrangements from dimming panels are linked to seeTouch wall stations in the rooms</li>
+                        <li style="list-style-type:disc">2-4 potential arrangements each</li>
+                        <li style="list-style-type:disc">Occupants tap button for desired scene and lights change</li>
+                    </ul>
+                </div>
             </div>
             <div class="col-md-6">
                 <div class="block">
-                    <img class="img-responsive" src="{% static 'images/mech/mech-overview.jpg' %}" alt="">
+                    <img class="img-responsive" src="{% static 'images/lighting/archdaily_artificial_lighting.jpg' %}" alt="" width = "275">
                 </div>
+                <br />
+                <div class="block">
+                    <img class="img-responsive" src="{% static 'images/lighting/BMS_Phipps_source.jpg' %}" alt="" height = "300" width = "400">
+                </div>
+
             </div>
         </div>
     </div>
@@ -188,16 +212,17 @@
     <div class="container">
         <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">DETAILED FEATURES</h2>
             <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">
-                Here are some features of the lighting system and controls with links to specifications and manufacturer's websites. For information about the particular lights used in the building and their locations, please see the Lighting System page under System Diagrams.
+                Here are some features of the lighting system and controls with links to specifications and manufacturer's websites. For information about the particular lights used in the building and their locations, please see the System Location page.
             </p>
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                  <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
                     <div class="img-wrapper">
                         <img src="{% static 'images/lighting/EcoSysBallast_01_hero.png' %}" class="img-responsive" alt="EcoSystem Ballast" height = "300">
                         <div class="overlay">
                             <div class="buttons">
                                 <a target="_blank" href="http://www.lutron.com/en-US/Products/Pages/FluorescentBallasts/EcoSystemBallasts/Overview.aspx">Details</a>
+                                <a rel="gallery" class="fancybox" href="{% static 'images/lighting/EcoSysBallast_01_hero.png' %}">Demo</a>
                             </div>
                         </div>
                     </div>
@@ -214,13 +239,14 @@
                 </figure>
             </div>
 
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                 <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="300ms">
                     <div class="img-wrapper">
-                        <img src="{% static 'images/lighting/Dimming_Panel.png' %}" class="img-responsive" alt="" >
+                        <img src="{% static 'images/lighting/Dimming_Panel_square.png' %}" class="img-responsive" alt="" >
                         <div class="overlay">
                             <div class="buttons">
-                                <a target="_blank" href=""  http://www.lutron.com/TechnicalDocumentLibrary/LCP128-SpecGrade.pdf">Details</a>
+                                <a target="_blank" href="http://www.lutron.com/TechnicalDocumentLibrary/LCP128-SpecGrade.pdf">Details</a>
+                                <a rel="gallery" class="fancybox" href="{% static 'images/lighting/Dimming_Panel_square.png' %}">Demo</a>
                             </div>
                         </div>
                     </div>
@@ -237,13 +263,14 @@
                 </figure>
             </div>
 
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                 <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="300ms">
                     <div class="img-wrapper">
-                        <img src="{% static 'images/lighting/seeTouch_picture.png' %}" class="img-responsive" alt="seeTouch" width = "150" height = "300">
+                        <img src="{% static 'images/lighting/seeTouch_picture_square.png' %}" class="img-responsive" alt="seeTouch">
                         <div class="overlay">
                             <div class="buttons">
-                                <a rel="gallery" class="fancybox" href="http://www.lutron.com/TechnicalDocumentLibrary/so-4s.pdf">Details</a>
+                                <a target="_blank" href="http://www.lutron.com/TechnicalDocumentLibrary/so-4s.pdf">Details</a>
+                                <a rel="gallery" class="fancybox" href="{% static 'images/lighting/seeTouch_picture_square.png' %}">Demo</a>
                             </div>
                         </div>
                     </div>
@@ -292,7 +319,7 @@
                             </a>
                         </p>
                     </div>
-                   
+
                 </div>
             </footer> <!-- /#footer -->
 
