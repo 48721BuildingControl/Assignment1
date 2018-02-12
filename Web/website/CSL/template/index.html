@@ -79,6 +79,7 @@
                                     <li><a href="mech-sys-geo.html">Geothermal System</a></li>
                                     <li><a href="mech-sys-ufds.html">Under-Floor Distribution System</a></li>
                                     <li><a href="mech-sys-tcers.html">Tri-Coil Energy-Recovery System</a></li>
+                                    <li><a href="mech-sys-location.html">System Location</a></li>
                                 </ul>
                               </div>
                             </li>
@@ -89,6 +90,7 @@
                                         <li><a href="lighting-sys-overview.html">Overview</a></li>
                                         <li><a href="lighting-sys-daylighting.html">Passive Design - Daylighting</a></li>
                                         <li><a href="lighting-sys-artificial.html">Artificial Lighting</a></li>
+                                        <li><a href="lighting-sys-location.html">System Location</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -98,15 +100,6 @@
                                     <ul>
                                         <li><a href="dynamic-data-mech.html">Mechanical System</a></li>
                                         <li><a href="dynamic-data-lighting.html">Lighting System</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">System Diagram <span class="caret"></span></a>
-                                <div class="dropdown-menu">
-                                    <ul>
-                                        <li><a href="sys-diagram-mech.html">Mechanical System</a></li>
-                                        <li><a href="sys-diagram-lighting.html">Lighting System</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -295,7 +288,7 @@ Portfolio Section Start
             </div>
             <div class="col-sm-4 col-xs-12">
                 <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="900ms">
-                    <div class="img-wrapper">
+                    <div class="img-wrapper">   
                         <img src="{% static 'images/portfolio/item-5.jpg' %}" class="img-responsive" alt="" >
                         <div class="overlay">
                             <div class="buttons">
@@ -358,8 +351,9 @@ Portfolio Section Start
             <div class="col-md-4 col-lg-4 col-xs-12">
                 <div class="media wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
                     <div class="media-left">
-                        <div class="icon">
-                            <i class="ion-ios-flask-outline"></i>
+                        <div class="img-wrapper">
+                            <img src="{% static 'images/awards/ILFI-Logo.jpg' %}" class="" alt="">
+                            
                         </div>
                     </div>
                     <div class="media-body">
@@ -371,8 +365,8 @@ Portfolio Section Start
             <div class="col-md-4 col-lg-4 col-xs-12">
                 <div class="media wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="600ms">
                     <div class="media-left">
-                        <div class="icon">
-                            <i class="ion-ios-lightbulb-outline"></i>
+                        <div class="img-wrapper">
+                            <img src="{% static 'images/awards/SITES_short_aqua_web.png' %}" class="" alt="">
                         </div>
                     </div>
                     <div class="media-body">
@@ -385,7 +379,7 @@ Portfolio Section Start
                 <div class="media wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="900ms">
                     <div class="media-left">
                         <div class="icon">
-                            <i class="ion-ios-lightbulb-outline"></i>
+                            <img src="{% static 'images/awards/usgbc_gray.png' %}" class="img-responsive" alt="">
                         </div>
                     </div>
                     <div class="media-body">
@@ -398,37 +392,11 @@ Portfolio Section Start
                 <div class="media wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="1200ms">
                     <div class="media-left">
                         <div class="icon">
-                            <i class="ion-ios-americanfootball-outline"></i>
+                            <img src="{% static 'images/awards/WELL.jpg' %}" class="" alt="">
                         </div>
                     </div>
                     <div class="media-body">
                         <h4 class="media-heading">Free updates</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, sint.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-lg-4 col-xs-12">
-                <div class="media wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="1500ms">
-                    <div class="media-left">
-                        <div class="icon">
-                            <i class="ion-ios-keypad-outline"></i>
-                        </div>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Solid Support</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, sint.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-lg-4 col-xs-12">
-                <div class="media wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="1800ms">
-                    <div class="media-left">
-                        <div class="icon">
-                            <i class="ion-ios-barcode-outline"></i>
-                        </div>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Simple Installation</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, sint.</p>
                     </div>
                 </div>
@@ -443,18 +411,6 @@ Portfolio Section Start
             Call To Action Section Start
             ================================================== -->
             <section id="call-to-action">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="block">
-                                <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">SO WHAT YOU THINK ?</h1>
-                                <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis,<br>possimus commodi, fugiat magnam temporibus vero magni recusandae? Dolore, maxime praesentium.</p>
-                                <a href="contact.html" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">Contact With Me</a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
             </section>
 
             <!--
@@ -470,31 +426,6 @@ Portfolio Section Start
                                 Free Bootstrap Templates
                             </a>
                         </p>
-                    </div>
-                    <div class="col-md-4">
-                        <!-- Social Media -->
-                        <ul class="social">
-                            <li>
-                                <a href="http://wwww.fb.com/themefisher" class="Facebook">
-                                    <i class="ion-social-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="http://wwww.twitter.com/themefisher" class="Twitter">
-                                    <i class="ion-social-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="Linkedin">
-                                    <i class="ion-social-linkedin"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="http://wwww.fb.com/themefisher" class="Google Plus">
-                                    <i class="ion-social-googleplus"></i>
-                                </a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </footer> <!-- /#footer -->

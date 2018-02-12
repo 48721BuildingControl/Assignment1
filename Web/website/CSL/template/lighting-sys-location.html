@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html class="no-js">
+    <head>
+        <!-- Basic Page Needs
+        ================================================== -->
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="icon" href="{% static 'images/soa_logo.png' %}">
+        <title> Physical Location - Lighting System </title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="author" content="Chen-Xu">
+        <!-- Mobile Specific Metas
+        ================================================== -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+         <!-- Template CSS Files
+        ================================================== -->
+        <!-- Twitter Bootstrs CSS -->
+        <link rel="stylesheet" href="{% static 'plugins/bootstrap/bootstrap.min.css' %}">
+        <!-- Ionicons Fonts Css -->
+        <link rel="stylesheet" href="{% static 'plugins/ionicons/ionicons.min.css' %}">
+        <!-- animate css -->
+        <link rel="stylesheet" href="{% static 'plugins/animate-css/animate.css' %}">
+        <!-- Hero area slider css-->
+        <link rel="stylesheet" href="{% static 'plugins/slider/slider.css' %}">
+        <!-- owl craousel css -->
+        <link rel="stylesheet" href="{% static 'plugins/owl-carousel/owl.carousel.css' %}">
+        <link rel="stylesheet" href="{% static 'plugins/owl-carousel/owl.theme.css' %}">
+        <!-- Fancybox -->
+        <link rel="stylesheet" href="{% static 'plugins/facncybox/jquery.fancybox.css' %}">
+        <!-- template main css file -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+
+
+        <!--
+        ==================================================
+        Header Section Start
+        ================================================== -->
+        <header id="top-bar" class="navbar-fixed-top animated-header">
+            <div class="container">
+                <div class="navbar-header">
+                    <!-- responsive nav button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <!-- /responsive nav button -->
+
+                    <!-- logo -->
+                    <div class="navbar-brand">
+                        <a href="index.html" style="margin-top: 0;">
+                            <img src="{% static 'images/SoA.png' %}" alt="">
+                        </a>
+                    </div>
+                    <!-- /logo -->
+                </div>
+                <!-- main menu -->
+                <nav class="collapse navbar-collapse navbar-right" role="navigation">
+                    <div class="main-menu">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="index.html" >Home</a>
+                            </li>
+                            <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mechanical <span class="caret"></span></a>
+                              <div class="dropdown-menu">
+                                <ul>
+                                    <li><a href="mech-sys-overview.html">Overview</a></li>
+                                    <li><a href="mech-sys-nv.html">Passive Design - Natural Ventilation</a></li>
+                                    <li><a href="mech-sys-geo.html">Geothermal System</a></li>
+                                    <li><a href="mech-sys-ufds.html">Under-Floor Distribution System</a></li>
+                                    <li><a href="mech-sys-tcers.html">Tri-Coil Energy-Recovery System</a></li>
+                                    <li><a href="mech-sys-location.html">System Location</a></li>
+                                </ul>
+                              </div>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lighting <span class="caret"></span></a>
+                                <div class="dropdown-menu">
+                                    <ul>
+                                        <li><a href="lighting-sys-overview.html">Overview</a></li>
+                                        <li><a href="lighting-sys-daylighting.html">Passive Design - Daylighting</a></li>
+                                        <li><a href="lighting-sys-artificial.html">Artificial Lighting</a></li>
+                                        <li><a href="lighting-sys-location.html">System Location</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dynamic Data <span class="caret"></span></a>
+                                <div class="dropdown-menu">
+                                    <ul>
+                                        <li><a href="dynamic-data-mech.html">Mechanical System</a></li>
+                                        <li><a href="dynamic-data-lighting.html">Lighting System</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sustainablility <span class="caret"></span></a>
+                                <div class="dropdown-menu">
+                                    <ul>
+                                        <li><a href="sus-energy.html">Net Zero Energy</a></li>
+                                        <li><a href="sus-water.html">Net Zero Water</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- /main nav -->
+            </div>
+        </header>
+
+
+<!--
+        ==================================================
+            Global Page Section Start
+        ================================================== -->
+        <section class="global-page-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="block">
+                            <h2>Lighting System Locations</h2>
+                            <ol class="breadcrumb">
+                                <li>
+                                    <a href="index.html">
+                                        <i class="ion-ios-home"></i>
+                                        Home
+                                    </a>
+                                </li>
+                                <li class="active">Lighting System Locations</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!--
+
+==================================================
+    Level 1 Section  Start
+================================================== -->
+<section id="service-page" class="pages service-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="block">
+                    <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">Level 1</h2>
+                    <p class="wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">This section contains the physical locations for lights on level 1. Clicking the tabs on the left side of the page will show the locations of the lights for that light type highlighted on a map of all the lights on the floor. To see lights on level 2, scroll down the page. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--
+
+        ==================================================
+            Tabs Section Start
+        ================================================== -->
+        <section class="tab">
+<ul class="nav nav-pills nav-stacked col-md-2 wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">
+    <li class="active"><a href="#tab_1a" data-toggle="pill">A: LED Recessed Downlight</a></li>
+    <li><a href="#tab_1b" data-toggle="pill">B: 4’ T8 Strip Fixture</a></li>
+    <li><a href="#tab_1c" data-toggle="pill">C: 26W Compact Fluorescent Elevator PIT Weatherproof Fixture</a></li>
+    <li><a href="#tab_1d" data-toggle="pill">D: 4’ T8 Direct/Indirect Pendent Mounted Fixture</a></li>
+    <li><a href="#tab_1f" data-toggle="pill">F: 3W LED Desk Light</a></li>
+    <li><a href="#tab_1h" data-toggle="pill">H: (2) Lamp T8, 18 Cell Parabolic Troffer</a></li>
+    <li><a href="#tab_1os" data-toggle="pill">OS: Occupancy Sensor</a></li>
+    <li><a href="#tab_1p" data-toggle="pill">P: 2’ T8 Ceiling Mounted Direct Stairwell Fixture</a></li>
+    <li><a href="#tab_1r" data-toggle="pill">R: 4’ T8 Pendant mounted aimable Fixture</a></li>
+    <li><a href="#tab_1s" data-toggle="pill">S: 4’ T8 Wall Mounted Wall Washer</a></li>
+    <li><a href="#tab_1sp" data-toggle="pill">SP: Daylighting Sensor</a></li>
+    <li><a href="#tab_1t" data-toggle="pill">T: Compact Fluorescent, Horizontal Lamp, Recessed Downlight</a></li>
+    <li><a href="#tab_1unc" data-toggle="pill">UNC: LED Undercabinet Lighting</a></li>
+</ul>
+<div class="tab-content col-md-10 wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">
+        <div class="tab-pane fade active in" id="tab_1a">
+             <h4>A: LED Recessed Downlight with 8" Aperature with Open Reflector</h4>
+            <p>This light is recessed into the ceiling and uses a reflector to increase the efficiency.
+                <ul><li><b>Number of Lamps and Wattage:</b> 35W LED</li>
+                    <li><b>Manufacturer:</b> Gotham</li>
+                    <li><b>Catalog Number:</b> DOM8 LED 1500L 277 D08 DIM</li>
+                    <li><b>Voltage:</b> 277</li>
+                    <li><a href="https://usermanual.wiki/Pdf/1000320150Attachmenturl.94730481.pdf">More info</a></li>
+                </ul>
+                <img src="{% static 'images/locations/A-level1.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>
+        <div class="tab-pane fade" id="tab_1b">
+             <h4>B: 4’ T8 Strip Fixture with High Efficiency Ballast and Reflector</h4>
+            <p>
+                <ul><li><b>Number of Lamps and Wattage:</b> (1) F32 T8</li>
+                    <li><b>Manufacturer:</b> Lumax</li>
+                    <li><b>Catalog Number:</b> CS13248-EO9U/CSWG4B</li>
+                    <li><b>Voltage:</b> 277</li>
+                    <li><a href="http://lumaxlighting.com/wp-content/uploads/2015/06/CS.pdf">More info</a></li>
+                </ul>
+                <img src="{% static 'images/locations/B-level1.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>
+        <div class="tab-pane fade" id="tab_1c">
+             <h4>C: 26W Compact Fluorescent Elevator PIT Weatherproof Fixture</h4>
+            <p>
+                <ul><li><b>Number of Lamps and Wattage:</b>  (1) 26W TRT</li>
+                    <li><b>Manufacturer:</b> Phoenix</li>
+                    <li><b>Catalog Number:</b> VP-W-26CFL-277-GCL-G</li>
+                    <li><b>Voltage:</b> 277</li>
+                    <li><a href="http://www.phoenixlighting.com/sites/default/files/n5610181q_vp_series_spec_sheet.pdf">More info</a></li>
+                </ul>
+                <img src="{% static 'images/locations/C-level1.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>
+        <div class="tab-pane fade" id="tab_1d">
+             <h4>D: 4’ T8 Direct/Indirect Pendent Mounted Fixture with High Efficiency Ecosystem Dimming Ballast</h4>
+            <p>
+                <ul><li><b>Number of Lamps and Wattage:</b> (1) F32 T8</li>
+                    <li><b>Manufacturer:</b> Focal Point</li>
+                    <li><b>Catalog Number:</b> FV2S-PS-2T8-1C-277-LUT/D-C24-L835-WH-XX</li>
+                    <li><b>Voltage:</b> 277</li>
+                    <li><a href="http://focalpointlights.com/dev/sites/default/files/FV2S_0.pdf">More info</a></li>
+                </ul>
+                <img src="{% static 'images/locations/D-level1.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>
+        <div class="tab-pane fade" id="tab_1f">
+             <h4>F: 3W LED Desk Light</h4>
+            <p>
+                <ul><li><b>Number of Lamps and Wattage:</b> 3W LED</li>
+                    <li><b>Manufacturer:</b> Forum</li>
+                    <li><b>Catalog Number:</b> TL-3WLED-120V-FINISH BY Architect</li>
+                    <li><b>Voltage:</b> 277</li>
+                    <li><a href="http://www.eurolight.com.au/telbix-forum-aluminium-3w-led-table-lamp.html">More info</a></li>
+                </ul>
+                <img src="{% static 'images/locations/F-level1.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>
+        <div class="tab-pane fade" id="tab_1h">
+             <h4>H: (2) Lamp T8, 18 Cell Parabolic Troffer with High Efficiency Ecosystem Ballast</h4>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                <ul><li><b>Number of Lamps and Wattage:</b> (2) F32 T8</li>
+                    <li><b>Manufacturer:</b> Lumax</li>
+                    <li><b>Catalog Number:</b> ID 232 24-E09</li>
+                    <li><b>Voltage:</b> 277</li>
+                    <li><a href="http://lumaxlighting.com/wp-content/uploads/2015/06/IDdesigner.pdf">More info</a></li>
+                    <li>Note: More information is for similar product.</li>
+                </ul>
+                <img src="{% static 'images/locations/H-level1.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>
+        <div class="tab-pane fade" id="tab_1os">
+             <h4>OS: Occupancy Sensor</h4>
+            <p>Occupancy sensors are used to turn lights off when no one is in the room.
+                <ul>
+                    <li><b>Manufacturer:</b> Lutron</li>
+                    <li><a href="http://www.lutron.com/en-US/Products/Pages/Sensors/Occupancy-Vacancy/Occupancy.aspx">More info</a></li>
+                </ul>
+                <img src="{% static 'images/locations/OS-level1.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>
+        <div class="tab-pane fade" id="tab_1p">
+             <h4>P: 2’ T8 Ceiling Mounted Direct Stairwell Fixture</h4>
+            <p>
+                <ul><li><b>Number of Lamps and Wattage:</b> (1) F17 T8</li>
+                    <li><b>Manufacturer:</b> Luminaire Lighting</li>
+                    <li><b>Catalog Number:</b> VPF 82-117-LH-277-OP-BLK-WET-EMB 50 With cold weather ballast</li>
+                    <li><b>Voltage:</b> 277</li>
+                    <li><a href="http://documents.luminairelighting.com/images/yootheme/downloads/spec_sheets/LED_VPF8.pdf">More info</a></li>
+                </ul>
+                <img src="{% static 'images/locations/P-level1.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>
+        <div class="tab-pane fade" id="tab_1r">
+             <h4>R: 4’ T8 Pendant mounted aimable Fixture with High Efficiency EcoSystem Ballast aimed to the center of the angled ceiling</h4>
+            <p>
+                <ul><li><b>Number of Lamps and Wattage:</b> (1) F32 T8</li>
+                    <li><b>Manufacturer:</b> Forum</li>
+                    <li><b>Catalog Number:</b> QUA-S-05-2-CMXB-277-LUT/R-CV-L835-HW-XX</li>
+                    <li><b>Voltage:</b> 277</li>
+                    <li><a href="http://forumlighting.com/pdfs/QUA-1PMS.pdf">More info</a></li>
+                    <li>Note: More information is for similar product.</li>
+                </ul>
+                <img src="{% static 'images/locations/R-level1.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>        
+        <div class="tab-pane fade" id="tab_1s">
+             <h4>S: 4’ T8 Wall Mounted Wall Washer with High Efficiency Ecosystem Ballast</h4>
+            <p>
+                <ul><li><b>Number of Lamps and Wattage:</b> (1) F32 T8</li>
+                    <li><b>Manufacturer:</b> Forum</li>
+                    <li><b>Catalog Number:</b> SADL-05-EXL4’-277-CBA-ASYL</li>
+                    <li><b>Voltage:</b> 277</li>
+                    <li>No specification sheet available</li>
+                </ul>
+                <img src="{% static 'images/locations/S-level1.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>
+        <div class="tab-pane fade" id="tab_1sp">
+             <h4>SP: Daylighting Sensor</h4>
+            <p>Daylight sensors are used to detect if there is sufficient daylight or if electric lights must be used.
+                    <li><b>Manufacturer:</b> Lutron</li>
+                    <li><b>Catalog Number:</b> C-SR-M1 WH</li>
+                    <li><a href="http://www.lutron.com/TechnicalDocumentLibrary/EC-DIR-WH.pdf">More info</a></li>
+                </ul>
+                <img src="{% static 'images/locations/SP-level1.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>
+        <div class="tab-pane fade" id="tab_1t">
+             <h4>T: Compact Fluorescent, Horizontal Lamp, Lensed and Wet Location Listed, 6” Aperature, Recessed Downlight</h4>
+            <p>
+                <ul><li><b>Number of Lamps and Wattage:</b> 32W TRT</li>
+                    <li><b>Manufacturer:</b> Spectrum</li>
+                    <li><b>Catalog Number:</b> SG6H-132TRT-EX-CR-AR6625CS-PG-WL</li>
+                    <li><b>Voltage:</b> 277</li>
+                    <li><a href="http://www.speclight.com/images/product_spec/Recessed%20Specs/arch%20recess/SG6H_AR6615.pdf">More info</a></li>
+                </ul>
+                <img src="{% static 'images/locations/T-level1.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>
+        <div class="tab-pane fade" id="tab_1unc">
+             <h4>UNC: LED Undercabinet Lighting with 12” Jumper Cables and Termination Plugs</h4>
+            <p>
+                <ul><li><b>Number of Lamps and Wattage:</b> 6W LED</li>
+                    <li><b>Manufacturer:</b> ALKCO</li>
+                    <li><b>Catalog Number:</b> ARIS-11-27-120-PRL-XXX</li>
+                    <li><b>Voltage:</b> 277</li>
+                    <li><a href="http://www.lightingproducts.philips.ca/documents/webdb2/Alkco/PDF/Aris_Flyer.pdf">More info</a></li>
+                </ul>
+                <img src="{% static 'images/locations/UNC-level1.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>        
+</div><!-- tab content -->
+    </section>
+
+<!--
+
+
+==================================================
+    Level 2 Section  Start
+================================================== -->
+<section id="service-page" class="pages service-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="block">
+                    <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">Level 2</h2>
+                    <p class="wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">This section contains the physical locations for lights on level 2. Clicking the tabs on the left side of the page will show the locations of the lights for that light type highlighted on a map of all the lights on the floor. To see lights on level 1, scroll up the page. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--
+
+        ==================================================
+            Tabs Section Start
+        ================================================== -->
+        <section class="tab">
+<ul class="nav nav-pills nav-stacked col-md-2 wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">
+    <li class="active"><a href="#tab_2a" data-toggle="pill">A: LED Recessed Downlight</a></li>
+    <li><a href="#tab_2b" data-toggle="pill">B: 4’ T8 Strip Fixture</a></li>
+    <li><a href="#tab_2d" data-toggle="pill">D: 4’ T8 Direct/Indirect Pendent Mounted Fixture</a></li>
+    <li><a href="#tab_2e" data-toggle="pill">E: 2 Lamp Recessed T8 Channel</a></li>
+    <li><a href="#tab_2f" data-toggle="pill">F: 3W LED Desk Light</a></li>
+    <li><a href="#tab_2h" data-toggle="pill">H: (2) Lamp T8, 18 Cell Parabolic Troffer</a></li>
+    <li><a href="#tab_2os" data-toggle="pill">OS: Occupancy Sensor</a></li>
+    <li><a href="#tab_2p" data-toggle="pill">P: 2’ T8 Ceiling Mounted Direct Stairwell Fixture</a></li>
+    <li><a href="#tab_2q" data-toggle="pill">Q: 4’ T8 Cove Light Mounted in the Light Shelf</a></li>
+    <li><a href="#tab_2r" data-toggle="pill">R: 4’ T8 Pendant mounted aimable Fixture</a></li>
+    <li><a href="#tab_2sr" data-toggle="pill">SP: Daylighting Sensor</a></li>
+    <li><a href="#tab_2unc" data-toggle="pill">UNC: LED Undercabinet Lighting</a></li>
+    <li><a href="#tab_2v" data-toggle="pill">V: 33” Diameter Decorative Pendant Fixture</a></li>
+</ul>
+<div class="tab-content col-md-10 wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">
+        <div class="tab-pane fade active in" id="tab_2a">
+             <h4>A: LED Recessed Downlight with 8" Aperature with Open Reflector</h4>
+            <p>This light is recessed into the ceiling and uses a reflector to increase the efficiency.
+                <ul><li><b>Number of Lamps and Wattage:</b> 35W LED</li>
+                    <li><b>Manufacturer:</b> Gotham</li>
+                    <li><b>Catalog Number:</b> DOM8 LED 1500L 277 D08 DIM</li>
+                    <li><b>Voltage:</b> 277</li>
+                    <li><a href="https://usermanual.wiki/Pdf/1000320150Attachmenturl.94730481.pdf">More info</a></li>
+                </ul>
+                <img src="{% static 'images/locations/A-level2.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>
+        <div class="tab-pane fade" id="tab_2b">
+             <h4>B: 4’ T8 Strip Fixture with High Efficiency Ballast and Reflector</h4>
+            <p>
+                <ul><li><b>Number of Lamps and Wattage:</b> (1) F32 T8</li>
+                    <li><b>Manufacturer:</b> Lumax</li>
+                    <li><b>Catalog Number:</b> CS13248-EO9U/CSWG4B</li>
+                    <li><b>Voltage:</b> 277</li>
+                    <li><a href="http://lumaxlighting.com/wp-content/uploads/2015/06/CS.pdf">More info</a></li>
+                </ul>
+                <img src="{% static 'images/locations/B-level2.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>
+        <div class="tab-pane fade" id="tab_2d">
+             <h4>D: 4’ T8 Direct/Indirect Pendent Mounted Fixture with High Efficiency Ecosystem Dimming Ballast</h4>
+            <p>
+                <ul><li><b>Number of Lamps and Wattage:</b> (1) F32 T8</li>
+                    <li><b>Manufacturer:</b> Focal Point</li>
+                    <li><b>Catalog Number:</b> FV2S-PS-2T8-1C-277-LUT/D-C24-L835-WH-XX</li>
+                    <li><b>Voltage:</b> 277</li>
+                    <li><a href="http://focalpointlights.com/dev/sites/default/files/FV2S_0.pdf">More info</a></li>
+                </ul>
+                <img src="{% static 'images/locations/D-level2.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>
+        <div class="tab-pane fade" id="tab_2e">
+             <h4>E: 2 Lamp Recessed T8 Channel with Louver and High Efficiency Ballast</h4>
+            <p>
+                <ul><li><b>Number of Lamps and Wattage:</b> (1) F32 T8</li>
+                    <li><b>Manufacturer:</b> Linear Lighting</li>
+                    <li><b>Catalog Number:</b> WW2-D-1-ET8-277-PBL-R-BW-XX</li>
+                    <li><b>Voltage:</b> 277</li>
+                    <li><a href="http://focalpointlights.com/dev/sites/default/files/FV2S_0.pdf">More info</a></li>
+                    <li>Note: More information is for similar product.</li>
+                </ul>
+                <img src="{% static 'images/locations/E-level2.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>
+        <div class="tab-pane fade" id="tab_2f">
+            <h4>F: 3W LED Desk Light</h4>
+            <p>
+                <ul><li><b>Number of Lamps and Wattage:</b> 3W LED</li>
+                    <li><b>Manufacturer:</b> Forum</li>
+                    <li><b>Catalog Number:</b> TL-3WLED-120V-FINISH BY Architect</li>
+                    <li><b>Voltage:</b> 277</li>
+                    <li><a href="http://www.eurolight.com.au/telbix-forum-aluminium-3w-led-table-lamp.html">More info</a></li>
+                </ul>
+                <img src="{% static 'images/locations/F-level2.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>
+        <div class="tab-pane fade" id="tab_2h">
+            <h4>H: (2) Lamp T8, 18 Cell Parabolic Troffer with High Efficiency Ecosystem Ballast</h4>
+            <p>
+                <ul><li><b>Number of Lamps and Wattage:</b> (2) F32 T8</li>
+                    <li><b>Manufacturer:</b> Lumax</li>
+                    <li><b>Catalog Number:</b> ID 232 24-E09</li>
+                    <li><b>Voltage:</b> 277</li>
+                    <li><a href="http://lumaxlighting.com/wp-content/uploads/2015/06/IDdesigner.pdf">More info</a></li>
+                    <li>Note: More information is for similar product.</li>
+                </ul>
+                <img src="{% static 'images/locations/H-level2.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>
+        <div class="tab-pane fade" id="tab_2os">
+             <h4>OS: Occupancy Sensor</h4>
+            <p>Occupancy sensors are used to turn lights off when no one is in the room.
+                <ul>
+                    <li><b>Manufacturer:</b> Lutron</li>
+                    <li><a href="http://www.lutron.com/en-US/Products/Pages/Sensors/Occupancy-Vacancy/Occupancy.aspx">More info</a></li>
+                </ul>
+                <img src="{% static 'images/locations/OS-level2.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>
+        <div class="tab-pane fade" id="tab_2p">
+             <h4>P: 2’ T8 Ceiling Mounted Direct Stairwell Fixture</h4>
+            <p>
+                <ul><li><b>Number of Lamps and Wattage:</b> (1) F17 T8</li>
+                    <li><b>Manufacturer:</b> Luminaire Lighting</li>
+                    <li><b>Catalog Number:</b> VPF 82-117-LH-277-OP-BLK-WET-EMB 50 With cold weather ballast</li>
+                    <li><b>Voltage:</b> 277</li>
+                    <li><a href="http://documents.luminairelighting.com/images/yootheme/downloads/spec_sheets/LED_VPF8.pdf">More info</a></li>
+                </ul>
+                <img src="{% static 'images/locations/P-level2.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>
+        <div class="tab-pane fade" id="tab_2q">
+             <h4>Q: 4’ T8 Cove Light Mounted in the Light Shelf with high efficiency ecosystem ballast</h4>
+            <p>
+                <ul><li><b>Number of Lamps and Wattage:</b> (1) F32 T8</li>
+                    <li><b>Manufacturer:</b> Focal Point</li>
+                    <li><b>Catalog Number:</b> FCVA-26-1T8-1C-277-LUT/R-CV-L835-HW-XX</li>
+                    <li><b>Voltage:</b> 277</li>
+                    <li><a href="http://www.focalpointlights.com/sites/default/files/FCV_26.pdf">More info</a></li>
+                </ul>
+                <img src="{% static 'images/locations/Q-level2.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>        
+        <div class="tab-pane fade" id="tab_2r">
+             <h4>R: 4’ T8 Pendant mounted aimable Fixture with High Efficiency EcoSystem Ballast aimed to the center of the angled ceiling</h4>
+            <p>
+                <ul><li><b>Number of Lamps and Wattage:</b> (1) F32 T8</li>
+                    <li><b>Manufacturer:</b> Forum</li>
+                    <li><b>Catalog Number:</b> QUA-S-05-2-CMXB-277-LUT/R-CV-L835-HW-XX</li>
+                    <li><b>Voltage:</b> 277</li>
+                    <li><a href="http://forumlighting.com/pdfs/QUA-1PMS.pdf">More info</a></li>
+                    <li>Note: More information is for similar product.</li>
+                </ul>
+                <img src="{% static 'images/locations/R-level2.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>
+        <div class="tab-pane fade" id="tab_2sr">
+             <h4>SP: Daylighting Sensor</h4>
+            <p>Daylight sensors are used to detect if there is sufficient daylight or if electric lights must be used.
+                    <li><b>Manufacturer:</b> Lutron</li>
+                    <li><b>Catalog Number:</b> C-SR-M1 WH</li>
+                    <li><a href="http://www.lutron.com/TechnicalDocumentLibrary/EC-DIR-WH.pdf">More info</a></li>
+                </ul>
+                <img src="{% static 'images/locations/SR-level2.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>
+        <div class="tab-pane fade" id="tab_2unc">
+            <h4>UNC: LED Undercabinet Lighting with 12” Jumper Cables and Termination Plugs</h4>
+            <p>
+                <ul><li><b>Number of Lamps and Wattage:</b> 6W LED</li>
+                    <li><b>Manufacturer:</b> ALKCO</li>
+                    <li><b>Catalog Number:</b> ARIS-11-27-120-PRL-XXX</li>
+                    <li><b>Voltage:</b> 277</li>
+                    <li><a href="http://www.lightingproducts.philips.ca/documents/webdb2/Alkco/PDF/Aris_Flyer.pdf">More info</a></li>
+                </ul>
+                <img src="{% static 'images/locations/UNC-level2.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>
+        <div class="tab-pane fade" id="tab_2v">
+             <h4>Pane V</h4>
+            <p>
+                <ul><li><b>Number of Lamps and Wattage:</b> (4) 13W CFL</li>
+                    <li><b>Manufacturer:</b> Winona</li>
+                    <li><b>Catalog Number:</b> 4801-30-G-277V-OA-BAL-STD</li>
+                    <li><b>Voltage:</b> 277</li>
+                    <li><a href="https://www.acuitybrands.com/products/detail/346335/Winona-Lighting/4801-Satro-LED/Illustra-LED-Bowl-Pendant/-/media/products/Winona_Lighting/346335/document/WFP4801_SATRO_LED_pdf.pdf">More info</a></li>
+                    <li>Note: More information is for similar product.</li>
+                </ul>
+                <img src="{% static 'images/locations/V-level2.png' %}" class="img-responsive" alt="A-level1" >
+            </p>
+        </div>        
+</div><!-- tab content -->
+    </section>
+
+<!--
+==================================================
+    Works Section Start
+================================================== -->
+<section class="works service-page">
+    <div class="container">
+        <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms"> </h2>
+            <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">
+                
+            </p>
+
+        </div>
+    </div>
+</section>
+
+
+
+            <!--
+            ==================================================
+            Call To Action Section Start
+            ================================================== -->
+            <section id="call-to-action">
+
+            </section>
+
+            <!--
+            ==================================================
+            Footer Section Start
+            ================================================== -->
+            <footer id="footer">
+                <div class="container">
+                    <div class="col-md-8">
+                        <p class="copyright">Copyright: <span><script>document.write(new Date().getFullYear())</script></span> Design and Developed by <a href="http://www.Themefisher.com" target="_blank">Themefisher</a>. <br>
+                            Get More
+                            <a href="https://themefisher.com/free-bootstrap-templates/" target="_blank">
+                                Free Bootstrap Templates
+                            </a>
+                        </p>
+                    </div>
+                    
+                </div>
+            </footer> <!-- /#footer -->
+
+	<!-- Template Javascript Files
+	================================================== -->
+	<!-- jquery -->
+	<script src="{% static 'plugins/jQurey/jquery.min.js' %}"></script>
+	<!-- Form Validation -->
+    <script src="{% static 'plugins/form-validation/jquery.form.js' %}"></script>
+    <script src="{% static 'plugins/form-validation/jquery.validate.min.js' %}"></script>
+	<!-- owl carouserl js -->
+	<script src="{% static 'plugins/owl-carousel/owl.carousel.min.js' %}"></script>
+	<!-- bootstrap js -->
+	<script src="{% static 'plugins/bootstrap/bootstrap.min.js' %}"></script>
+	<!-- wow js -->
+	<script src="{% static 'plugins/wow-js/wow.min.js' %}"></script>
+	<!-- slider js -->
+	<script src="{% static 'plugins/slider/slider.js' %}"></script>
+	<!-- Fancybox -->
+	<script src="{% static 'plugins/facncybox/jquery.fancybox.js' %}"></script>
+	<!-- template main js -->
+	<script src="{% static 'js/main.js' %}"></script>
+ 	</body>
+</html>

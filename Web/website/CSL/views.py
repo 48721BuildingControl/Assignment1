@@ -31,6 +31,9 @@ def mech_sys_ufds(request):
 
 def mech_sys_tcers(request):
     return render(request, 'CSL/template/mech-sys-tcers.html')
+    
+def mech_sys_location(request):
+    return render(request, 'CSL/template/mech-sys-location.html')
 
 def dynamic_data_mech(request):
     return render(request, 'CSL/template/dynamic-data-mech.html')
@@ -43,6 +46,9 @@ def lighting_sys_dl(request):
     
 def lighting_sys_al(request):
     return render(request, 'CSL/template/lighting-sys-artificial.html')
+    
+def lighting_sys_location(request):
+    return render(request, 'CSL/template/lighting-sys-location.html')
     
 def dynamic_data_lighting(request):
     return render(request, 'CSL/template/dynamic-data-lighting.html')
