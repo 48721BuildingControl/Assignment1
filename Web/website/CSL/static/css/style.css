@@ -37,7 +37,7 @@ ul {
 }
 
 ul li {
-  list-style: black; !important
+  list-style: none;
 }
 
 a:hover {
