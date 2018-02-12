@@ -73,7 +73,7 @@ a:hover {
 }
 
 .selector {
-  opacity: .8;
+  opacity: 0;
   background-color: #ff7777;
   color: #ffffff;
   transition: opacity .5s;
