@@ -20,16 +20,24 @@ p {
   font-weight: 300;
 }
 
+p.reference {
+  font-family: "Roboto", sans-serif;
+  line-height: 32px;
+  font-size: 12px;
+  font-weight: 100;
+}
+
 body {
   background: #ffffff;
 }
 
 ul {
   padding-left: 0;
+  text-align: left;
 }
 
 ul li {
-  list-style: none;
+  list-style: black; !important
 }
 
 a:hover {
