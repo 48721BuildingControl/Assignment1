@@ -44,6 +44,45 @@ a:hover {
   text-decoration: none;
 }
 
+.arrow-right {
+  width: 0;
+	height: 0;
+	border-top: 15px solid transparent;
+	border-left: 35px solid red;
+	border-bottom: 15px solid transparent;
+  position: absolute;
+}
+
+.arrow-right:hover {
+  border-left: 35px solid lightgreen;
+  cursor: pointer;
+}
+
+.arrow-left {
+  width: 0;
+	height: 0;
+	border-top: 15px solid transparent;
+	border-right: 35px solid red;
+	border-bottom: 15px solid transparent;
+  position: absolute;
+}
+
+.arrow-left:hover {
+  border-right: 35px solid lightgreen;
+  cursor: pointer;
+}
+
+.selector {
+  opacity: .8;
+  background-color: #ff7777;
+  color: #ffffff;
+  transition: opacity .5s;
+}
+
+.selector:hover {
+  opacity: .8;
+}
+
 .section-heading {
   text-align: center;
   margin-bottom: 65px;
