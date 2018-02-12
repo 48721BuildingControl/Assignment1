@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html class="no-js">
+    <head>
+        <!-- Basic Page Needs
+        ================================================== -->
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="icon" href="{% static 'images/soa_logo.png' %}">
+        <title> Dynamic Data </title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="author" content="Chen-Xu">
+        <!-- Mobile Specific Metas
+        ================================================== -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <!-- Template CSS Files
+        ================================================== -->
+        <!-- Twitter Bootstrs CSS -->
+        <link rel="stylesheet" href="{% static 'plugins/bootstrap/bootstrap.min.css' %}">
+        <!-- Ionicons Fonts Css -->
+        <link rel="stylesheet" href="{% static 'plugins/ionicons/ionicons.min.css' %}">
+        <!-- animate css -->
+        <link rel="stylesheet" href="{% static 'plugins/animate-css/animate.css' %}">
+        <!-- Hero area slider css-->
+        <link rel="stylesheet" href="{% static 'plugins/slider/slider.css' %}">
+        <!-- owl craousel css -->
+        <link rel="stylesheet" href="{% static 'plugins/owl-carousel/owl.carousel.css' %}">
+        <link rel="stylesheet" href="{% static 'plugins/owl-carousel/owl.theme.css' %}">
+        <!-- Fancybox -->
+        <link rel="stylesheet" href="{% static 'plugins/facncybox/jquery.fancybox.css' %}">
+        <!-- template main css file -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script>
+            function querySupplyAirData(){
+                $.get("getRealTimeSupplyAirData/", function(data, status){
+                    document.getElementById('realTimeSupplyAir').innerHTML = data;
+                });
+            }
+            function queryOutdoorAirData(){
+                $.get("getRealTimeOutdoorAirData/", function(data, status){
+                    document.getElementById('realTimeOutdoorAir').innerHTML = data;
+                });
+            }
+            function queryExhaustedAirData(){
+                $.get("getRealTimeReturnedAirData/", function(data, status){
+                    document.getElementById('realTimeReturnedAir').innerHTML = data;
+                });
+            }
+            function queryMixedAirData(){
+                $.get("getRealTimeMixedAirData/", function(data, status){
+                    document.getElementById('realTimeMixedAir').innerHTML = data;
+                });
+            }
+            function queryDataFrequently(){
+                querySupplyAirData();
+                queryOutdoorAirData();
+                queryExhaustedAirData();
+                queryMixedAirData();
+                var queryRepeat = setTimeout(queryDataFrequently, 30000);
+            }
+            queryDataFrequently();
+
+            function changeState(id) {
+              $("#realTimeDataContainer-S").removeClass("active");
+              $("#realTimeDataContainer-F").removeClass("active");
+              $("#realTimeDataContainer-R").removeClass("active");
+              $("#realTimeDataContainer-" + id).addClass("active");
+            }
+
+            function plotTemperature(hours){
+              var title = 'Supply';
+              if ($("#realTimeDataContainer-S").hasClass("active")) {
+                title = 'Supply';
+              } else if ($("#realTimeDataContainer-F").hasClass("active")) {
+                title = 'Fresh';
+              } else {
+                title = 'Returned';
+              }
+              $.getJSON('getTemperatureData/'+ hours + '/' + title + '/', function (data) {
+                  data = data.Items;
+                  dataForChart = [];
+                  for (var i=0; i<data.length; i++){
+                      data_i = data[i];
+                      thisDataForChart = []
+                      recordedTimeDate = new Date(data_i[0])
+                      thisDataForChart.push(recordedTimeDate.getTime())
+                      thisDataForChart.push(parseFloat(data_i[1]))
+                      dataForChart.push(thisDataForChart);
+                  }
+                  Highcharts.chart('chartContainer', {
+                      chart: {
+                          zoomType: 'x'
+                      },
+                      title: {
+                          text: 'CSL AHU ' + title + ' Air Temperature Last 48-hours'
+                      },
+                      subtitle: {
+                          text: document.ontouchstart === undefined ?
+                                  'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+                      },
+                      xAxis: {
+                          type: 'datetime'
+                      },
+                      yAxis: {
+                          title: {
+                              text: 'Temperature (F)'
+                          }
+                      },
+                      legend: {
+                          enabled: false
+                      },
+                      plotOptions: {
+                          area: {
+                              fillColor: {
+                                  linearGradient: {
+                                      x1: 0,
+                                      y1: 0,
+                                      x2: 0,
+                                      y2: 1
+                                  },
+                                  stops: [
+                                      [0, Highcharts.getOptions().colors[0]],
+                                      [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                                  ]
+                              },
+                              marker: {
+                                  radius: 2
+                              },
+                              lineWidth: 1,
+                              states: {
+                                  hover: {
+                                      lineWidth: 1
+                                  }
+                              },
+                              threshold: null
+                          }
+                      },
+                      series: [{
+                          type: 'area',
+                          name: 'Temperature',
+                          data: dataForChart
+                      }]
+                  });
+              });
+          }
+          function plotHumidity(hours){
+            var title = 'Supply';
+            if ($("#realTimeDataContainer-S").hasClass("active")) {
+              title = 'Supply';
+            } else if ($("#realTimeDataContainer-F").hasClass("active")) {
+              title = 'Fresh';
+            } else {
+              title = 'Returned';
+            }
+            $.getJSON('getHumidityData/'+ hours + '/' + title + '/', function (data) {
+                data = data.Items;
+                dataForChart = [];
+                for (var i=0; i<data.length; i++){
+                    data_i = data[i];
+                    thisDataForChart = []
+                    recordedTimeDate = new Date(data_i[0])
+                    thisDataForChart.push(recordedTimeDate.getTime())
+                    thisDataForChart.push(parseFloat(data_i[1]))
+                    dataForChart.push(thisDataForChart);
+                }
+                Highcharts.chart('chartContainer', {
+                    chart: {
+                        zoomType: 'x'
+                    },
+                    title: {
+                        text: 'CSL AHU ' + title + ' Air Humidity Last 48-hours'
+                    },
+                    subtitle: {
+                        text: document.ontouchstart === undefined ?
+                                'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+                    },
+                    xAxis: {
+                        type: 'datetime'
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Percentage (%)'
+                        }
+                    },
+                    legend: {
+                        enabled: false
+                    },
+                    plotOptions: {
+                        area: {
+                            fillColor: {
+                                linearGradient: {
+                                    x1: 0,
+                                    y1: 0,
+                                    x2: 0,
+                                    y2: 1
+                                },
+                                stops: [
+                                    [0, Highcharts.getOptions().colors[0]],
+                                    [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                                ]
+                            },
+                            marker: {
+                                radius: 2
+                            },
+                            lineWidth: 1,
+                            states: {
+                                hover: {
+                                    lineWidth: 1
+                                }
+                            },
+                            threshold: null
+                        }
+                    },
+                    series: [{
+                        type: 'area',
+                        name: 'Humidity',
+                        data: dataForChart
+                    }]
+                });
+            });
+        }
+        function plotFlowRate(hours){
+            var title = 'Supply';
+            if ($("#realTimeDataContainer-S").hasClass("active")) {
+              title = 'Supply';
+            } else if ($("#realTimeDataContainer-F").hasClass("active")) {
+              title = 'Fresh';
+            } else {
+              title = 'Returned';
+            }
+            $.getJSON('getFlowRateData/'+ hours + '/' + title + '/', function (data) {
+                data = data.Items;
+                dataForChart = [];
+                for (var i=0; i<data.length; i++){
+                    data_i = data[i];
+                    thisDataForChart = []
+                    recordedTimeDate = new Date(data_i[0])
+                    thisDataForChart.push(recordedTimeDate.getTime())
+                    thisDataForChart.push(parseFloat(data_i[1]))
+                    dataForChart.push(thisDataForChart);
+                }
+                Highcharts.chart('chartContainer', {
+                    chart: {
+                        zoomType: 'x'
+                    },
+                    title: {
+                        text: 'CSL AHU ' + title + ' Air Flow Rate Last 48-hours'
+                    },
+                    subtitle: {
+                        text: document.ontouchstart === undefined ?
+                                'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+                    },
+                    xAxis: {
+                        type: 'datetime'
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Percentage (%)'
+                        }
+                    },
+                    legend: {
+                        enabled: false
+                    },
+                    plotOptions: {
+                        area: {
+                            fillColor: {
+                                linearGradient: {
+                                    x1: 0,
+                                    y1: 0,
+                                    x2: 0,
+                                    y2: 1
+                                },
+                                stops: [
+                                    [0, Highcharts.getOptions().colors[0]],
+                                    [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                                ]
+                            },
+                            marker: {
+                                radius: 2
+                            },
+                            lineWidth: 1,
+                            states: {
+                                hover: {
+                                    lineWidth: 1
+                                }
+                            },
+                            threshold: null
+                        }
+                    },
+                    series: [{
+                        type: 'area',
+                        name: 'Flow Rate',
+                        data: dataForChart
+                    }]
+                });
+            });
+        }
+        </script>
+
+    </head>
+    <body>
+
+
+        <!--
+        ==================================================
+        Header Section Start
+        ================================================== -->
+        <header id="top-bar" class="navbar-fixed-top animated-header">
+            <div class="container">
+                <div class="navbar-header">
+                    <!-- responsive nav button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <!-- /responsive nav button -->
+
+                    <!-- logo -->
+                    <div class="navbar-brand">
+                        <a href="index.html" style="margin-top: 0;">
+                            <img src="{% static 'images/SoA.png' %}" alt="">
+                        </a>
+                    </div>
+                    <!-- /logo -->
+                </div>
+                <!-- main menu -->
+                <nav class="collapse navbar-collapse navbar-right" role="navigation">
+                    <div class="main-menu">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="index.html" >Home</a>
+                            </li>
+                            <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mechanical <span class="caret"></span></a>
+                              <div class="dropdown-menu">
+                                <ul>
+                                    <li><a href="mech-sys-overview.html">Overview</a></li>
+                                    <li><a href="mech-sys-nv.html">Passive Design - Natural Ventilation</a></li>
+                                    <li><a href="mech-sys-geo.html">Geothermal System</a></li>
+                                    <li><a href="mech-sys-ufds.html">Under-Floor Distribution System</a></li>
+                                    <li><a href="mech-sys-tcers.html">Tri-Coil Energy-Recovery System</a></li>
+                                    <li><a href="mech-sys-location.html">System Location</a></li>
+                                </ul>
+                              </div>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lighting <span class="caret"></span></a>
+                                <div class="dropdown-menu">
+                                    <ul>
+                                        <li><a href="lighting-sys-overview.html">Overview</a></li>
+                                        <li><a href="lighting-sys-daylighting.html">Passive Design - Daylighting</a></li>
+                                        <li><a href="lighting-sys-artificial.html">Artificial Lighting</a></li>
+                                        <li><a href="lighting-sys-location.html">System Location</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="dynamic-data.html">Dynamic Data</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sustainablility <span class="caret"></span></a>
+                                <div class="dropdown-menu">
+                                    <ul>
+                                        <li><a href="sus-energy.html">Net Zero Energy</a></li>
+                                        <li><a href="sus-water.html">Net Zero Water</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- /main nav -->
+            </div>
+        </header>
+
+
+<!--
+        ==================================================
+            Global Page Section Start
+        ================================================== -->
+        <section class="global-page-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="block">
+                            <h2>Dynamic Data</h2>
+                            <ol class="breadcrumb">
+                                <li>
+                                    <a href="index.html">
+                                        <i class="ion-ios-home"></i>
+                                        Home
+                                    </a>
+                                </li>
+                                <li class="active">Dynamic Data</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<!--
+==================================================
+    Service Page Section  Start
+================================================== -->
+<section id="service-page" class="pages service-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="block">
+                    <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">Dynamic Data</h2>
+                    <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">Dynamic data of CSL is fetched through the PI system web API and displayed in a real time fashion.</p>
+                    <div class="row service-parts">
+                        <div class="col-md-12">
+                          <div class="table-responsive table-bordered">
+                             <table class="table" style="margin-bottom: 0;">
+                               <thead>
+                                 <tr class="primary">
+                                     <th>Data Type</th>
+                                     <th>Realtime Value (°F)</th>
+                                 </tr>
+                               </thead>
+                               <tbody>
+                                 <tr class="info">
+                                   <td>Supply Air</td>
+                                   <td id="realTimeSupplyAir">-</td>
+                                 </tr>
+                                 <tr class="info">
+                                   <td>Outdoor Air</td>
+                                   <td id="realTimeOutdoorAir">-</td>
+                                 </tr>
+                                 <tr class="info">
+                                   <td>Returned Air</td>
+                                   <td id="realTimeReturnedAir">-</td>
+                                 </tr>
+                                 <tr class="info">
+                                   <td>Mixed Air</td>
+                                   <td id="realTimeMixedAir">-</td>
+                                 </tr>
+                               </tbody>
+                             </table>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="block">
+                    <img class="img-responsive" id="hvacImg" src="{% static 'images/mech/mech-AHU-6.jpg' %}" alt="" style="display: none;">
+                    <canvas id="viewerCanvas" width="570" height="298"></canvas>
+                    <p class="reference">Source: <a href="http://ba.conservatory.org/">http://ba.conservatory.org/</a></p>
+                    <div id="realTimeDataContainer-S" class="arrow-right" onclick="changeState('S'); plotTemperature(48)"></div>
+                    <div id="realTimeDataContainer-F" class="arrow-right active" onclick="changeState('F'); plotTemperature(48)"></div>
+                    <div id="realTimeDataContainer-R" class="arrow-left" onclick="changeState('R'); plotTemperature(48)"></div>
+                    <p>By clicking the arrows of supply air, returned air or fresh air, the data will be showed below.</p>
+                </div>
+            </div>
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-primary" onclick="plotTemperature(48)">Temperature</button>
+          <button type="button" class="btn btn-primary" onclick="plotHumidity(48)">Humidity</button>
+          <button type="button" class="btn btn-primary" onclick="plotFlowRate(48)">Flow Rate</button>
+        </div>
+        <div class="row" id="chartContainer">
+
+        </div>
+    </div>
+</section>
+
+            <!--
+            ==================================================
+            Footer Section Start
+            ================================================== -->
+            <footer id="footer">
+                <div class="container">
+                    <div class="col-md-8">
+                        <p class="copyright">Copyright: <span><script>document.write(new Date().getFullYear())</script></span> Design and Developed by <a href="http://www.Themefisher.com" target="_blank">Themefisher</a>. <br>
+                            Get More
+                            <a href="https://themefisher.com/free-bootstrap-templates/" target="_blank">
+                                Free Bootstrap Templates
+                            </a>
+                        </p>
+                    </div>
+
+                </div>
+            </footer> <!-- /#footer -->
+
+	<!-- Template Javascript Files
+	================================================== -->
+	<!-- jquery -->
+	<script src="{% static 'plugins/jQurey/jquery.min.js' %}"></script>
+	<!-- Form Validation -->
+    <script src="{% static 'plugins/form-validation/jquery.form.js' %}"></script>
+    <script src="{% static 'plugins/form-validation/jquery.validate.min.js' %}"></script>
+	<!-- owl carouserl js -->
+	<script src="{% static 'plugins/owl-carousel/owl.carousel.min.js' %}"></script>
+	<!-- bootstrap js -->
+	<script src="{% static 'plugins/bootstrap/bootstrap.min.js' %}"></script>
+	<!-- wow js -->
+	<script src="{% static 'plugins/wow-js/wow.min.js' %}"></script>
+	<!-- slider js -->
+	<script src="{% static 'plugins/slider/slider.js' %}"></script>
+	<!-- Fancybox -->
+	<script src="{% static 'plugins/facncybox/jquery.fancybox.js' %}"></script>
+	<!-- template main js -->
+	<script src="{% static 'js/main.js' %}"></script>
+  <!-- custom js -->
+  <script type="text/javascript">
+    window.onload = function() {
+      var c = document.getElementById("viewerCanvas");
+      var ctx = c.getContext("2d");
+      var img = document.getElementById("hvacImg");
+      ctx.drawImage(img, 0, 0);
+      movePartS("realTimeDataContainer-S");
+      movePartF("realTimeDataContainer-F");
+      movePartR("realTimeDataContainer-R");
+    }
+    function getElementXY(e) {
+      var x = 0, y = 0;
+      while (e) {
+          x += (e.offsetLeft-e.scrollLeft);
+          y += (e.offsetTop-e.scrollTop);
+          e = e.offsetParent;
+      }
+      var bodyRect = document.body.getBoundingClientRect();
+      return {
+          x: x,
+          y: y//(y - bodyRect.top)
+      };
+    }
+    function movePartS(id){
+      realTimeDataContainer = document.getElementById(id);
+      xy = getElementXY(document.getElementById("viewerCanvas"));
+      realTimeDataContainerStyle = realTimeDataContainer.style;
+      realTimeDataContainerStyle["left"] = (xy.x - 120) + "px";
+      realTimeDataContainerStyle["top"] = (xy.y - 190) + "px";
+    }
+    function movePartF(id) {
+      realTimeDataContainer = document.getElementById(id);
+      xy = getElementXY(document.getElementById("viewerCanvas"));
+      realTimeDataContainerStyle = realTimeDataContainer.style;
+      realTimeDataContainerStyle["left"] = (xy.x - 700) + "px";
+      realTimeDataContainerStyle["top"] = (xy.y - 220) + "px";
+    }
+    function movePartR(id) {
+      realTimeDataContainer = document.getElementById(id);
+      xy = getElementXY(document.getElementById("viewerCanvas"));
+      realTimeDataContainerStyle = realTimeDataContainer.style;
+      realTimeDataContainerStyle["left"] = (xy.x - 400) + "px";
+      realTimeDataContainerStyle["top"] = (xy.y - 340) + "px";
+    }
+    $(window).on("load resize scroll",function(e){
+      movePartS("realTimeDataContainer-S");
+      movePartF("realTimeDataContainer-F");
+      movePartR("realTimeDataContainer-R");
+    });
+    </script>
+ 	</body>
+</html>

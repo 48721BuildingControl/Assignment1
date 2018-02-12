@@ -95,14 +95,8 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dynamic Data <span class="caret"></span></a>
-                                <div class="dropdown-menu">
-                                    <ul>
-                                        <li><a href="dynamic-data-mech.html">Mechanical System</a></li>
-                                        <li><a href="dynamic-data-lighting.html">Lighting System</a></li>
-                                    </ul>
-                                </div>
+                            <li>
+                                <a href="dynamic-data.html">Dynamic Data</a>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sustainablility <span class="caret"></span></a>
@@ -176,6 +170,69 @@
         </div>
         <br>
         <div class="row">
+          <div class="col-md-12">
+              <div class="block">
+                  <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">System Description</p>
+                  <div class="row service-parts">
+                      <div class="col-md-12">
+                        <p>
+                          <ul>
+                            <li style="list-style: inherit;"><p>Enthalpy wheel removes moistures from incoming hot muggy outside air and lightens the latent load on the cooling coils using cool dry building exhaust air</p></li>
+                            <li style="list-style: inherit;"><p>Pre-cooling coil, first of the exhaust air, picks up some of the sensible heat in the warm outside air, further reducing the outside air cooling load</p></li>
+                            <li style="list-style: inherit;"><p>Refrigerant cooling coil produces cold and very dry conditioned supply air from the mixed air of outside air and return air from the space</p></li>
+                            <li style="list-style: inherit;"><p>The heat captured from the air cooling coil refrigerant is then rejected to the geothermal wells, which is ultimately stored in the ground to use for heating in the following winter</p></li>
+                            <li style="list-style: inherit;"><p>The heat picked up by the pre-cooling coil is then transferred to a reheat coil located just downstream of the main cooling coil to warm the supply air a bit for comfort without using any energy</p></li>
+                          </ul>
+                        </p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <div class="block">
+            <img class="img-responsive" id="hvacImg" src="{% static 'images/mech/mech-AHU-1.jpg' %}" alt="" style="display: none;">
+            <canvas id="viewerCanvas" width="1140" height="595"></canvas>
+            <p class="reference">Source: <a href="http://ba.conservatory.org/">http://ba.conservatory.org/</a></p>
+            <div id="realTimeDataContainer" class="selector" style="height: 60px; width: 30px; position: absolute;
+        text-align: center; font-size: 8px; vertical-align: middle; line-height: 20px">Relief Air Damper</div>
+            <div id="realTimeDataContainer-1" class="selector" style="height: 60px; width: 30px; position: absolute;
+        text-align: center; font-size: 8px; vertical-align: middle; line-height: 20px">Outside Air Damper</div>
+            <div id="realTimeDataContainer-2" class="selector" style="height: 60px; width: 70px; position: absolute;
+        text-align: center; font-size: 15px; vertical-align: middle; line-height: 20px">Exhaust Fan</div>
+            <div id="realTimeDataContainer-3" class="selector" style="height: 120px; width: 50px; position: absolute;
+        text-align: center; font-size: 12px; vertical-align: middle; line-height: 20px">Enthalpy Wheel</div>
+            <div id="realTimeDataContainer-4" class="selector" style="height: 60px; width: 30px; position: absolute;
+        text-align: center; font-size: 9px; vertical-align: middle; line-height: 20px">Bypass Air Damper</div>
+            <div id="realTimeDataContainer-5" class="selector" style="height: 30px; width: 60px; position: absolute;
+        text-align: center; font-size: 9px; vertical-align: middle; line-height: 15px">Recirculation Air Damper</div>
+            <div id="realTimeDataContainer-6" class="selector" style="height: 60px; width: 30px; position: absolute;
+        text-align: center; font-size: 9px; vertical-align: middle; line-height: 20px">Filter</div>
+            <div id="realTimeDataContainer-7" class="selector" style="height: 60px; width: 30px; position: absolute;
+        text-align: center; font-size: 9px; vertical-align: middle; line-height: 20px">Filter</div>
+            <div id="realTimeDataContainer-8" class="selector" style="height: 60px; width: 30px; position: absolute;
+        text-align: center; font-size: 9px; vertical-align: middle; line-height: 20px">Pre-Filter</div>
+            <div id="realTimeDataContainer-9" class="selector" style="height: 60px; width: 30px; position: absolute;
+        text-align: center; font-size: 9px; vertical-align: middle; line-height: 20px">Final-Filter</div>
+            <div id="realTimeDataContainer-10" class="selector" style="height: 60px; width: 40px; position: absolute;
+        text-align: center; font-size: 9px; vertical-align: middle; line-height: 20px">Pre-cooling Coil</div>
+            <div id="realTimeDataContainer-11" class="selector" style="height: 60px; width: 80px; position: absolute;
+        text-align: center; font-size: 9px; vertical-align: middle; line-height: 20px">DX Coil</div>
+            <div id="realTimeDataContainer-12" class="selector" style="height: 60px; width: 40px; position: absolute;
+        text-align: center; font-size: 9px; vertical-align: middle; line-height: 20px">Reheat Coil</div>
+            <div id="realTimeDataContainer-13" class="selector" style="height: 60px; width: 30px; position: absolute;
+        text-align: center; font-size: 9px; vertical-align: middle; line-height: 20px">UV Lighting</div>
+            <div id="realTimeDataContainer-14" class="selector" style="height: 50px; width: 50px; position: absolute;
+        text-align: center; font-size: 9px; vertical-align: middle; line-height: 20px">Water Source Heat Pump</div>
+            <div id="realTimeDataContainer-15" class="selector" style="height: 60px; width: 60px; position: absolute;
+        text-align: center; font-size: 9px; vertical-align: middle; line-height: 20px">Supply Fan</div>
+        </div>
+        <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">
+          <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Click here for more information about the Tri-Coil Energy-Recovery System.
+          </a>
+        </p>
+        <div class="collapse" id="collapseExample">
+          <div class="row">
             <div class="col-md-6">
                 <div class="block">
                     <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">System Specification</p>
@@ -184,13 +241,13 @@
                           <p>
                             The unit components include:
                             <ul>
-                              <li><p>A filter module (MERV 9 pre‐filters and MERV 13 final filters)</p></li>
-                              <li><p>Recirculation/mixing box module</p></li>
-                              <li><p>Exhaust fan with VFD</p></li>
-                              <li><p>Enthalpy wheel module</p></li>
-                              <li><p>Tri-coil module</p></li>
-                              <li><p>Supply fan with VFD</p></li>
-                              <li><p>Water-cooled compressors</p></li>
+                              <li style="list-style: inherit;"><p>A filter module (MERV 9 pre‐filters and MERV 13 final filters)</p></li>
+                              <li style="list-style: inherit;"><p>Recirculation/mixing box module</p></li>
+                              <li style="list-style: inherit;"><p>Exhaust fan with VFD</p></li>
+                              <li style="list-style: inherit;"><p>Enthalpy wheel module</p></li>
+                              <li style="list-style: inherit;"><p>Tri-coil module</p></li>
+                              <li style="list-style: inherit;"><p>Supply fan with VFD</p></li>
+                              <li style="list-style: inherit;"><p>Water-cooled compressors</p></li>
                             </ul>
                           </p>
                         </div>
@@ -199,35 +256,27 @@
             </div>
             <div class="col-md-6">
                 <div class="block">
-                    <img class="img-responsive" src="{% static 'images/mech/mech-AHU-1.png' %}" alt="">
-                    <p class="reference">Source: <a href="http://ba.conservatory.org/">http://ba.conservatory.org/</a></p>
+                  <img class="img-responsive" src="{% static 'images/mech/mech-AHU-3.png' %}" alt="">
+                  <p class="reference">AHU Schematic Diagram, source by course instructor.</p>
                 </div>
             </div>
-        </div>
-        <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">
-          <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            Click here for more information about the Tri-Coil Energy-Recovery System.
-          </a>
-        </p>
-        <div class="row collapse" id="collapseExample">
+          </div>
+          <br>
+          <div class="row">
+            <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">Design Specification</p>
             <div class="col-md-6">
                 <div class="block">
-                    <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">System Description</p>
-                    <div class="row service-parts">
-                        <div class="col-md-12">
-                          <p>
-                            The enthalpy wheel of the Berner Tri-Coil unit is able to remove moistures from incoming hot muggy outside air and to lighten the latent load on the cooling coils using cool dry building exhaust air. Then some of the sensible heat in the warm outside air is picked up in the first of the three coils, a pre-cooling coil, which further reduces the outside air cooling load.  Next, the outside air is mixed with return air from the space, which then goes through the refrigerant cooling coil to produce cold and very dry conditioned supply air. The heat captured from the air by the cooling coil refrigerant is then rejected to the geothermal wells, which is ultimately stored in the ground to use for heating in the following winter. However, with underfloor air systems, you can’t blow cold air on the occupant’s ankles, it would quickly become uncomfortable, so you have to raise the supply air temperature. In a typical HVAC system, if you raise the supply air temperature, you let in too much moisture, which can cause air quality and comfort issues. The neat trick in the Berner Tricoil unit is that the heat picked up by the pre-cooling coil is then transferred to a reheat coil located just downstream of the main cooling coil. So, the cold dry supply air is warmed up a bit for comfort, but stays nice and dry, and it doesn’t use any energy to reheat in the process. (Traugott, 2012)
-                          </p>
-                        </div>
-                    </div>
+                  <img class="img-responsive" src="{% static 'images/mech/mech-AHU-4.png' %}" alt="">
+                  <p class="reference">Mixed Air Load Design, source by course instructor.</p>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="block">
-                    <img class="img-responsive" src="{% static 'images/mech/mech-AHU-3.png' %}" alt="">
-                    <p class="reference">AHU Schematic Diagram</p>
+                  <img class="img-responsive" src="{% static 'images/mech/mech-AHU-5.png' %}" alt="">
+                  <p class="reference">OA Load Design, source by course instructor.</p>
                 </div>
             </div>
+          </div>
         </div>
     </div>
 </section>
@@ -268,5 +317,173 @@
 	<script src="{% static 'plugins/facncybox/jquery.fancybox.js' %}"></script>
 	<!-- template main js -->
 	<script src="{% static 'js/main.js' %}"></script>
+  <!-- custom js -->
+  <script type="text/javascript">
+    window.onload = function() {
+      var c = document.getElementById("viewerCanvas");
+      var ctx = c.getContext("2d");
+      var img = document.getElementById("hvacImg");
+      ctx.drawImage(img, 0, 0);
+      moverealTimeDataContainer("realTimeDataContainer");
+      movePart1("realTimeDataContainer-1");
+      movePart2("realTimeDataContainer-2");
+      movePart3("realTimeDataContainer-3");
+      movePart4("realTimeDataContainer-4");
+      movePart5("realTimeDataContainer-5");
+      movePart6("realTimeDataContainer-6");
+      movePart7("realTimeDataContainer-7");
+      movePart8("realTimeDataContainer-8");
+      movePart9("realTimeDataContainer-9");
+      movePart10("realTimeDataContainer-10");
+      movePart11("realTimeDataContainer-11");
+      movePart12("realTimeDataContainer-12");
+      movePart13("realTimeDataContainer-13");
+      movePart14("realTimeDataContainer-14");
+      movePart15("realTimeDataContainer-15");
+    }
+    function getElementXY(e) {
+      var x = 0, y = 0;
+      while (e) {
+          x += (e.offsetLeft-e.scrollLeft);
+          y += (e.offsetTop-e.scrollTop);
+          e = e.offsetParent;
+      }
+      var bodyRect = document.body.getBoundingClientRect();
+      return {
+          x: x,
+          y: y//(y - bodyRect.top)
+      };
+    }
+    function moverealTimeDataContainer(id){
+      realTimeDataContainer = document.getElementById(id);
+      xy = getElementXY(document.getElementById("viewerCanvas"));
+      realTimeDataContainerStyle = realTimeDataContainer.style;
+      realTimeDataContainerStyle["left"] = (xy.x + 65) + "px";
+      realTimeDataContainerStyle["top"] = (xy.y + 210) + "px";
+    }
+    function movePart1(id){
+      realTimeDataContainer = document.getElementById(id);
+      xy = getElementXY(document.getElementById("viewerCanvas"));
+      realTimeDataContainerStyle = realTimeDataContainer.style;
+      realTimeDataContainerStyle["left"] = (xy.x + 70) + "px";
+      realTimeDataContainerStyle["top"] = (xy.y + 280) + "px";
+    }
+    function movePart2(id) {
+      realTimeDataContainer = document.getElementById(id);
+      xy = getElementXY(document.getElementById("viewerCanvas"));
+      realTimeDataContainerStyle = realTimeDataContainer.style;
+      realTimeDataContainerStyle["left"] = (xy.x + 110) + "px";
+      realTimeDataContainerStyle["top"] = (xy.y + 210) + "px";
+    }
+    function movePart3(id) {
+      realTimeDataContainer = document.getElementById(id);
+      xy = getElementXY(document.getElementById("viewerCanvas"));
+      realTimeDataContainerStyle = realTimeDataContainer.style;
+      realTimeDataContainerStyle["left"] = (xy.x + 250) + "px";
+      realTimeDataContainerStyle["top"] = (xy.y + 210) + "px";
+    }
+    function movePart4(id) {
+      realTimeDataContainer = document.getElementById(id);
+      xy = getElementXY(document.getElementById("viewerCanvas"));
+      realTimeDataContainerStyle = realTimeDataContainer.style;
+      realTimeDataContainerStyle["left"] = (xy.x + 380) + "px";
+      realTimeDataContainerStyle["top"] = (xy.y + 210) + "px";
+    }
+    function movePart5(id) {
+      realTimeDataContainer = document.getElementById(id);
+      xy = getElementXY(document.getElementById("viewerCanvas"));
+      realTimeDataContainerStyle = realTimeDataContainer.style;
+      realTimeDataContainerStyle["left"] = (xy.x + 420) + "px";
+      realTimeDataContainerStyle["top"] = (xy.y + 260) + "px";
+    }
+    function movePart6(id) {
+      realTimeDataContainer = document.getElementById(id);
+      xy = getElementXY(document.getElementById("viewerCanvas"));
+      realTimeDataContainerStyle = realTimeDataContainer.style;
+      realTimeDataContainerStyle["left"] = (xy.x + 480) + "px";
+      realTimeDataContainerStyle["top"] = (xy.y + 50) + "px";
+    }
+    function movePart7(id) {
+      realTimeDataContainer = document.getElementById(id);
+      xy = getElementXY(document.getElementById("viewerCanvas"));
+      realTimeDataContainerStyle = realTimeDataContainer.style;
+      realTimeDataContainerStyle["left"] = (xy.x + 680) + "px";
+      realTimeDataContainerStyle["top"] = (xy.y + 140) + "px";
+    }
+    function movePart8(id) {
+      realTimeDataContainer = document.getElementById(id);
+      xy = getElementXY(document.getElementById("viewerCanvas"));
+      realTimeDataContainerStyle = realTimeDataContainer.style;
+      realTimeDataContainerStyle["left"] = (xy.x + 440) + "px";
+      realTimeDataContainerStyle["top"] = (xy.y + 345) + "px";
+    }
+    function movePart9(id) {
+      realTimeDataContainer = document.getElementById(id);
+      xy = getElementXY(document.getElementById("viewerCanvas"));
+      realTimeDataContainerStyle = realTimeDataContainer.style;
+      realTimeDataContainerStyle["left"] = (xy.x + 475) + "px";
+      realTimeDataContainerStyle["top"] = (xy.y + 345) + "px";
+    }
+    function movePart10(id) {
+      realTimeDataContainer = document.getElementById(id);
+      xy = getElementXY(document.getElementById("viewerCanvas"));
+      realTimeDataContainerStyle = realTimeDataContainer.style;
+      realTimeDataContainerStyle["left"] = (xy.x + 560) + "px";
+      realTimeDataContainerStyle["top"] = (xy.y + 345) + "px";
+    }
+    function movePart11(id) {
+      realTimeDataContainer = document.getElementById(id);
+      xy = getElementXY(document.getElementById("viewerCanvas"));
+      realTimeDataContainerStyle = realTimeDataContainer.style;
+      realTimeDataContainerStyle["left"] = (xy.x + 660) + "px";
+      realTimeDataContainerStyle["top"] = (xy.y + 345) + "px";
+    }
+    function movePart12(id) {
+      realTimeDataContainer = document.getElementById(id);
+      xy = getElementXY(document.getElementById("viewerCanvas"));
+      realTimeDataContainerStyle = realTimeDataContainer.style;
+      realTimeDataContainerStyle["left"] = (xy.x + 800) + "px";
+      realTimeDataContainerStyle["top"] = (xy.y + 345) + "px";
+    }
+    function movePart13(id) {
+      realTimeDataContainer = document.getElementById(id);
+      xy = getElementXY(document.getElementById("viewerCanvas"));
+      realTimeDataContainerStyle = realTimeDataContainer.style;
+      realTimeDataContainerStyle["left"] = (xy.x + 760) + "px";
+      realTimeDataContainerStyle["top"] = (xy.y + 345) + "px";
+    }
+    function movePart14(id) {
+      realTimeDataContainer = document.getElementById(id);
+      xy = getElementXY(document.getElementById("viewerCanvas"));
+      realTimeDataContainerStyle = realTimeDataContainer.style;
+      realTimeDataContainerStyle["left"] = (xy.x + 800) + "px";
+      realTimeDataContainerStyle["top"] = (xy.y + 220) + "px";
+    }
+    function movePart15(id) {
+      realTimeDataContainer = document.getElementById(id);
+      xy = getElementXY(document.getElementById("viewerCanvas"));
+      realTimeDataContainerStyle = realTimeDataContainer.style;
+      realTimeDataContainerStyle["left"] = (xy.x + 900) + "px";
+      realTimeDataContainerStyle["top"] = (xy.y + 345) + "px";
+    }
+    $(window).on("load resize scroll",function(e){
+      moverealTimeDataContainer("realTimeDataContainer");
+      movePart1("realTimeDataContainer-1");
+      movePart2("realTimeDataContainer-2");
+      movePart3("realTimeDataContainer-3");
+      movePart4("realTimeDataContainer-4");
+      movePart5("realTimeDataContainer-5");
+      movePart6("realTimeDataContainer-6");
+      movePart7("realTimeDataContainer-7");
+      movePart8("realTimeDataContainer-8");
+      movePart9("realTimeDataContainer-9");
+      movePart10("realTimeDataContainer-10");
+      movePart11("realTimeDataContainer-11");
+      movePart12("realTimeDataContainer-12");
+      movePart13("realTimeDataContainer-13");
+      movePart14("realTimeDataContainer-14");
+      movePart15("realTimeDataContainer-15");
+    });
+    </script>
  	</body>
 </html>
