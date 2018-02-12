@@ -87,10 +87,10 @@
               var title = 'Supply';
               if ($("#realTimeDataContainer-S").hasClass("active")) {
                 title = 'Supply';
-              } else if ($("#realTimeDataContainer-F").hasClass("active")) {
-                title = 'Fresh';
-              } else {
+              } else if ($("#realTimeDataContainer-R").hasClass("active")) {
                 title = 'Returned';
+              } else {
+                title = 'Fresh';
               }
               $.getJSON('getTemperatureData/'+ hours + '/' + title + '/', function (data) {
                   data = data.Items;
@@ -159,6 +159,7 @@
                   });
               });
           }
+          plotTemperature(48);
           function plotHumidity(hours){
             var title = 'Supply';
             if ($("#realTimeDataContainer-S").hasClass("active")) {
