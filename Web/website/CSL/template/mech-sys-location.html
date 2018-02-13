@@ -144,7 +144,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="block">
-                    <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">HVAC system</h2>
+                    <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">HVAC System</h2>
                 </div>
             </div>
         </div>
@@ -159,51 +159,93 @@
         ================================================== -->
         <section class="tab">
 <ul class="nav nav-pills nav-stacked col-md-2 wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">
-    <li class="active"><a href="#tab_TE" data-toggle="pill">Toilet Exhaust</a></li>
+    <li class="active"><a href="#tab_TE" data-toggle="pill">Exhaust Duct</a></li>
     <li><a href="#tab_CR" data-toggle="pill">Ceiling Return</a></li>
-    <li><a href="#tab_CS" data-toggle="pill">Ceiling Supply</a></li>
     <li><a href="#tab_SD" data-toggle="pill">Swirl Diffuser</a></li>
     <li><a href="#tab_LD" data-toggle="pill">Linear Diffuser</a></li>
     <li><a href="#tab_US" data-toggle="pill">Underfloor Supply</a></li>
+    <li><a href="#tab_CS" data-toggle="pill">Ceiling Supply</a></li>
 </ul>
 <div class="tab-content col-md-10 wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">
         <div class="tab-pane fade active in" id="tab_TE">
-             <h4>Toilet Exhaust</h4>
-            <p>Exhaust fan with VFD
+             <h4>Exhaust Duct</h4>
+             <p>Exhaust duct convey potentially harmful contaminants, and hence is:
+                    <li style="list-style-type:disc">Negatively pressuized</li>
+                    <li style="list-style-type:disc">Sealed in accordanced with SMACNA Seal Class A (described in HVAC Duct Construction Standards, Metal and Flexible, 2nd Edition)</li>
+                    <p class="reference">Source: Josh Wentz architectural engineering thesis</p>
+             </p>
+             <p>The duct is connected to the AHU to cool the outside air.
+             <a Target = "_blank" href="mech-sys-tcers.html">More info</a>
+                <ul><li><b>Exhaust grille:</b> Titus 4FL
+                    <a Target = "_blank" href="https://www.titus-hvac.com/Products/Grilles/4FL-NT">More info</a></li>
+                    <li><b>Ceiling diffuser:</b> Titus TMSA-AA
+                    <a Target = "_blank" href="https://www.titus-hvac.com/Products/Diffusers/TMS">More info</a></li>
+                </ul>
+            </p> 
+            <p>
                 <img src="{% static 'images/mech/toilet exhaust.png' %}" class="img-responsive" alt="A-level1" >
+                <p class="reference">Source: Building Controls and Diagnostics S16 Group 3</p>
             </p>
         </div>
         <div class="tab-pane fade" id="tab_CR">
              <h4>Ceiling Return</h4>
+             <p>The duct collects air from the Under-Floor Air Distribution system and is mixed with the outside air in the AHU.
+             <br><a Target = "_blank" href="mech-sys-tcers.html">More info</a>
+                <ul><li><b>Return grille:</b> Titus 4FL
+                    <a Target = "_blank" href="https://www.titus-hvac.com/Products/Grilles/4FL-NT">More info</a></li>
+                </ul>
+            </p> 
             <p>
                 <img src="{% static 'images/mech/ceiling return.png' %}" class="img-responsive" alt="A-level1" >
-            </p>
-        </div>
-        <div class="tab-pane fade" id="tab_CS">
-             <h4>Ceiling Supply</h4>
-            <p> Supply fan with VFD
-                
-                <img src="{% static 'images/mech/ceiling supply.png' %}" class="img-responsive" alt="A-level1" >
+                <p class="reference">Source: Building Controls and Diagnostics S16 Group 3</p>
             </p>
         </div>
         <div class="tab-pane fade" id="tab_SD">
              <h4>Swirl Diffuser</h4>
-            <p> Ceiling diffuser
-                
+             <p>Diffusers are installed on the floor in the middle of the room to provide more ventilation for occupants.
+                <ul><li><b>Underfloor diffuser:</b> Titus TAF-R
+                    <a Target = "_blank" href="https://www.titus-hvac.com/Products/UnderFloor/TAF-R">More info</a></li>
+                </ul>
+            </p> 
+            <p>    
                 <img src="{% static 'images/mech/swirl diffuser.png' %}" class="img-responsive" alt="A-level1" >
+                <p class="reference">Source: Building Controls and Diagnostics S16 Group 3</p>
             </p>
         </div>
         <div class="tab-pane fade" id="tab_LD">
              <h4>Linear Diffuser</h4>
-            <p>
-               
+             <p> The linear diffusers are installed around the perimeter and is composed of two diffusers coupled together, one for supply, one for return.
+                <ul><li><b>Supply diffuser:</b> Titus TAF-L-V
+                    <a Target = "_blank" href="https://www.titus-hvac.com/Products/UnderFloor/TAF-L-V">More info</a></li>
+                    <li><b>Return diffuser:</b> Titus CT-TAF-L
+                    <a Target = "_blank" href="https://www.titus-hvac.com/file/6472/ct-taf-l%20product_2013.pdf">More info</a></li>
+                </ul>
+            </p>
+            <p>              
                 <img src="{% static 'images/mech/linear diffuser.png' %}" class="img-responsive" alt="A-level1" >
+                <p class="reference">Source: Building Controls and Diagnostics S16 Group 3</p>
             </p>
         </div>
         <div class="tab-pane fade" id="tab_US">
              <h4>Underfloor Supply</h4>
+            <p>This duct is underneath the floor level and supplies air to the diffusers to provide for ventilation.
+            <br><a Target = "_blank" href="mech-sys-ufds.html">More info</a>
+            </p>
             <p>
                 <img src="{% static 'images/mech/underfloor supply.png' %}" class="img-responsive" alt="A-level1" >
+                <p class="reference">Source: Building Controls and Diagnostics S16 Group 3</p>
+            </p>
+        </div>
+        <div class="tab-pane fade" id="tab_CS">
+             <h4>Ceiling Supply</h4>
+             <p>The ceiling supply supplements the Under-Floor Air Distribution system in providing fresh air for ventilation.
+                <ul><li><b>VAV diffuser:</b> Titus T3SQ-1
+                    <a Target = "_blank" href="https://www.master.ca/documents/regroupements/Titus_T3SQ_Description.pdf">More info</a></li>
+                </ul>
+            </p>
+            <p> 
+                <img src="{% static 'images/mech/ceiling supply.png' %}" class="img-responsive" alt="A-level1" >
+                <p class="reference">Source: Building Controls and Diagnostics S16 Group 3</p>
             </p>
         </div>
        
