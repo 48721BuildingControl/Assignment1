@@ -107,7 +107,6 @@ def getHourTemperatureData(request, hours, type):
 		tmpURL = "https://128.2.109.159/piwebapi/streams/P0-MYhSMORGkyGTe9bdohw0ABzgAAAV0lOLTYyTlBVMkJWTDIwXFBISVBQU19BSFUtMV9SRVRVUk4gQUlSIFRFTVAuUFJFU0VOVF9WQUxVRQ"
 	url = tmpURL + \
 	      '/interpolated?starttime=%s&endtime=%s&interval=10m'%(nowMXhr.isoformat(), now.isoformat())
-	print (url)
 	r = getFromPi(url);
 	retItems = r['Items'];
 	formedTimeSeries = [];
@@ -128,7 +127,6 @@ def getTemperatureData(request, startDate, endDate, type):
 		tmpURL = "https://128.2.109.159/piwebapi/streams/P0-MYhSMORGkyGTe9bdohw0ABzgAAAV0lOLTYyTlBVMkJWTDIwXFBISVBQU19BSFUtMV9SRVRVUk4gQUlSIFRFTVAuUFJFU0VOVF9WQUxVRQ"
 	url = tmpURL + \
 	      '/interpolated?starttime=%s&endtime=%s&interval=10m'%(startTime.isoformat(), endTime.isoformat())
-	print (url)
 	r = getFromPi(url);
 	retItems = r['Items'];
 	formedTimeSeries = [];
@@ -148,7 +146,6 @@ def getHumidityData(request, startDate, endDate, type):
 		tmpURL = "https://128.2.109.159/piwebapi/streams/P0-MYhSMORGkyGTe9bdohw0ARzgAAAV0lOLTYyTlBVMkJWTDIwXFBISVBQU19BSFUtMV9SQSBIVU1JRElUWS5QUkVTRU5UX1ZBTFVF"
 	url = tmpURL + \
 	      '/interpolated?starttime=%s&endtime=%s&interval=10m'%(startTime.isoformat(), endTime.isoformat())
-	print (url)
 	r = getFromPi(url);
 	retItems = r['Items'];
 	formedTimeSeries = [];
@@ -167,7 +164,6 @@ def getFlowRateData(request, startDate, endDate, type):
 	elif type == "Fresh":
 		tmpURL = "https://128.2.109.159/piwebapi/streams/P0-MYhSMORGkyGTe9bdohw0AJTgAAAV0lOLTYyTlBVMkJWTDIwXFBISVBQU19BSFUtMV9PVVRTSURFIEFJUkZMT1cgS0NGTS5QUkVTRU5UX1ZBTFVF"
 	url = tmpURL + '/interpolated?starttime=%s&endtime=%s&interval=10m'%(startTime.isoformat(), endTime.isoformat())
-	print (url)
 	r = getFromPi(url);
 	retItems = r['Items'];
 	formedTimeSeries = [];

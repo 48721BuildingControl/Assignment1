@@ -51,6 +51,7 @@ a:hover {
 	border-left: 35px solid red;
 	border-bottom: 15px solid transparent;
   position: absolute;
+  transition: border-left .3s;
 }
 
 .arrow-right:hover {
@@ -65,11 +66,20 @@ a:hover {
 	border-right: 35px solid red;
 	border-bottom: 15px solid transparent;
   position: absolute;
+  transition: border-right .3s;
 }
 
 .arrow-left:hover {
   border-right: 35px solid lightgreen;
   cursor: pointer;
+}
+
+.arrow-right.selected {
+  border-left: 35px solid blue;
+}
+
+.arrow-left.selected {
+  border-right: 35px solid blue;
 }
 
 .selector {

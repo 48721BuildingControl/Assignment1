@@ -78,18 +78,18 @@
             queryDataFrequently();
 
             function changeState(id) {
-              $("#realTimeDataContainer-S").removeClass("active");
-              $("#realTimeDataContainer-F").removeClass("active");
-              $("#realTimeDataContainer-R").removeClass("active");
-              $("#realTimeDataContainer-" + id).addClass("active");
+              $("#realTimeDataContainer-S").removeClass("selected");
+              $("#realTimeDataContainer-F").removeClass("selected");
+              $("#realTimeDataContainer-R").removeClass("selected");
+              $("#realTimeDataContainer-" + id).addClass("selected");
             }
 
             function plotTemperature(startDate, endDate){
               $(".error").remove();
               var title = 'Supply';
-              if ($("#realTimeDataContainer-S").hasClass("active")) {
+              if ($("#realTimeDataContainer-S").hasClass("selected")) {
                 title = 'Supply';
-              } else if ($("#realTimeDataContainer-R").hasClass("active")) {
+              } else if ($("#realTimeDataContainer-R").hasClass("selected")) {
                 title = 'Returned';
               } else {
                 title = 'Fresh';
@@ -165,9 +165,9 @@
             function plotLastHoursTemperature(hours){
               $(".error").remove();
               var title = 'Supply';
-              if ($("#realTimeDataContainer-S").hasClass("active")) {
+              if ($("#realTimeDataContainer-S").hasClass("selected")) {
                 title = 'Supply';
-              } else if ($("#realTimeDataContainer-R").hasClass("active")) {
+              } else if ($("#realTimeDataContainer-R").hasClass("selected")) {
                 title = 'Returned';
               } else {
                 title = 'Fresh';
@@ -243,9 +243,9 @@
           function plotHumidity(startDate, endDate){
             $(".error").remove();
             var title = 'Supply';
-            if ($("#realTimeDataContainer-S").hasClass("active")) {
+            if ($("#realTimeDataContainer-S").hasClass("selected")) {
               title = 'Supply';
-            } else if ($("#realTimeDataContainer-F").hasClass("active")) {
+            } else if ($("#realTimeDataContainer-F").hasClass("selected")) {
               title = 'Fresh';
             } else {
               title = 'Returned';
@@ -320,9 +320,9 @@
         function plotFlowRate(startDate, endDate){
             $(".error").remove();
             var title = 'Supply';
-            if ($("#realTimeDataContainer-S").hasClass("active")) {
+            if ($("#realTimeDataContainer-S").hasClass("selected")) {
               title = 'Supply';
-            } else if ($("#realTimeDataContainer-F").hasClass("active")) {
+            } else if ($("#realTimeDataContainer-F").hasClass("selected")) {
               title = 'Fresh';
             } else {
               title = 'Returned';
@@ -547,7 +547,7 @@
                     <canvas id="viewerCanvas" width="570" height="298"></canvas>
                     <p class="reference">Source: <a href="http://ba.conservatory.org/">http://ba.conservatory.org/</a></p>
                     <div id="realTimeDataContainer-S" class="arrow-right" onclick="changeState('S'); plotLastHoursTemperature(48)"></div>
-                    <div id="realTimeDataContainer-F" class="arrow-right active" onclick="changeState('F'); plotLastHoursTemperature(48)"></div>
+                    <div id="realTimeDataContainer-F" class="arrow-right selected" onclick="changeState('F'); plotLastHoursTemperature(48)"></div>
                     <div id="realTimeDataContainer-R" class="arrow-left" onclick="changeState('R'); plotLastHoursTemperature(48)"></div>
                     <p>By clicking the arrows of supply air, returned air or fresh air, the data will be showed below.</p>
                 </div>
@@ -693,23 +693,28 @@
       realTimeDataContainer = document.getElementById(id);
       xy = getElementXY(document.getElementById("viewerCanvas"));
       realTimeDataContainerStyle = realTimeDataContainer.style;
-      realTimeDataContainerStyle["left"] = (xy.x - 120) + "px";
+      realTimeDataContainerStyle["left"] = ((1360 - window.innerWidth) / 2 + xy.x - 120) + "px";
       realTimeDataContainerStyle["top"] = (xy.y - 190) + "px";
     }
     function movePartF(id) {
       realTimeDataContainer = document.getElementById(id);
       xy = getElementXY(document.getElementById("viewerCanvas"));
       realTimeDataContainerStyle = realTimeDataContainer.style;
-      realTimeDataContainerStyle["left"] = (xy.x - 700) + "px";
+      realTimeDataContainerStyle["left"] = ((1360 - window.innerWidth) / 2 + xy.x - 700) + "px";
       realTimeDataContainerStyle["top"] = (xy.y - 220) + "px";
     }
     function movePartR(id) {
       realTimeDataContainer = document.getElementById(id);
       xy = getElementXY(document.getElementById("viewerCanvas"));
       realTimeDataContainerStyle = realTimeDataContainer.style;
-      realTimeDataContainerStyle["left"] = (xy.x - 400) + "px";
+      realTimeDataContainerStyle["left"] = ((1360 - window.innerWidth) / 2 + xy.x - 400) + "px";
       realTimeDataContainerStyle["top"] = (xy.y - 340) + "px";
     }
+    $(window).on("load resize scroll",function(e){
+      movePartS("realTimeDataContainer-S");
+      movePartF("realTimeDataContainer-F");
+      movePartR("realTimeDataContainer-R");
+    });
     </script>
  	</body>
 </html>
