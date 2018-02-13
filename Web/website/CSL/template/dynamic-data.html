@@ -549,10 +549,18 @@
                     <div id="realTimeDataContainer-S" class="arrow-right" onclick="changeState('S'); plotLastHoursTemperature(48)"></div>
                     <div id="realTimeDataContainer-F" class="arrow-right selected" onclick="changeState('F'); plotLastHoursTemperature(48)"></div>
                     <div id="realTimeDataContainer-R" class="arrow-left" onclick="changeState('R'); plotLastHoursTemperature(48)"></div>
-                    <p>By clicking the arrows of supply air, returned air or fresh air, the data will be showed below.</p>
                 </div>
             </div>
         </div>
+        <p>Instruction:</p>
+            <ul>
+              <li style="list-style: inherit;"><p>Select triangle for supply, returned, fresh air (temperature data within 48 hours will be displayed)</p></li>
+              <li style="list-style: inherit;"><p>Select temperature, humidity and flow rate tabs</p></li>
+              <li style="list-style: inherit;"><p>Input the startdate and enddate (It is recommended to input a range within one year for better experience)</p></li>
+              <li style="list-style: inherit;"><p>Click View Data button to view the plot.</p></li>
+              <li style="list-style: inherit;"><p>Format for the input: "YYYY-MM-DD HH:MM:SS"</p></li>
+            </ul>
+        <br>
         <div class="btn-group" role="group" aria-label="Basic example">
           <button type="button" class="btn btn-primary active" id="tempBtn">Temperature</button>
           <button type="button" class="btn btn-primary" id="humBtn">Humidity</button>
