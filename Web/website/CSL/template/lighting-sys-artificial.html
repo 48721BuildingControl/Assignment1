@@ -209,6 +209,24 @@
                 </div>
             </div>
 
+        <p class="subtitle-des wow fadeInUp animated" data-wow-delay=".5s" data-wow-duration="500ms">
+            <a data-toggle="collapse" href="#collapseSchemes" role="button" aria-expanded="false" aria-controls="collapseExample1">
+                Click here for schematics on building electrical controls.
+            </a>
+        </p>
+        <div class="row collapse" id="collapseSchemes">         
+            <h3>Power Riser Diagram</h3>
+                <p>This diagram shows how the dimming panels are connected to the seeTouch wall stations on the first floor and second floor. The dimming panels and wall stations are linked with Lutron cables, which continue to flow up to the second floor. Most rooms have four arrangement options, but the break roomes have only two arrangement options.
+                    <img class="img-responsive" src="{% static 'images/lighting/Power_Riser_Diagram.png' %}" alt=""  style = "padding-top:20px"></p>
+                    <p class = "reference">From Drawings provided by course instructor</p>
+                     
+            <h3>Wiring Diagram for Daylighting Sensors</h3>
+                <p>This diagram shows the wiring of the daylighting sensors to the rest of the system, allowing them to turn on and off lights as necessary to supplement the amount of daylight entering the space. The daylighting sensor is wired to the Lutron EcoSystem Ballast (more details below), so the ballast allows less current to flow to the electrical light when there is more daylight available. The wires from the EcoSystem Ballasts are then linked to the Lighting Distribution Panel, which supplies the electricity.
+                    <img class="img-responsive" src="{% static 'images/lighting/Wiring_Diagram.png' %}" alt=""  style = "padding-top:20px">
+                </p>
+                <p class = "reference">From Drawings provided by course instructor</p>
+         </div>
+
         </div>
     </div>
 </section>
