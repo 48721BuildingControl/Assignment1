@@ -96,7 +96,7 @@ def getRealTimeMixedAirData(request):
 	r = getFromPi('https://128.2.109.159/piwebapi/streams/P0-MYhSMORGkyGTe9bdohw0ABDgAAAV0lOLTYyTlBVMkJWTDIwXFBISVBQU19BSFUtMV9NSVhFRCBBSVIgVEVNUC5QUkVTRU5UX1ZBTFVF/value');
 	return HttpResponse(r['Value'])
 
-def getTemperatureData(request, hours, type):
+def getHourTemperatureData(request, hours, type):
 	now = datetime.utcnow();
 	nowMXhr = now - timedelta(hours = hours);
 	if type == "Supply":
@@ -117,15 +117,17 @@ def getTemperatureData(request, hours, type):
 	response = {'Items': formedTimeSeries}
 	return JsonResponse(response, json_dumps_params={'indent': 2})
 
-def getHumidityData(request, hours, type):
-	now = datetime.utcnow();
-	nowMXhr = now - timedelta(hours = hours);
-	if type == "Fresh":
-		tmpURL = "https://128.2.109.159/piwebapi/streams/P0-MYhSMORGkyGTe9bdohw0AQTgAAAV0lOLTYyTlBVMkJWTDIwXFBISVBQU19BSFUtMV9PQSBIVU1JRElUWS5QUkVTRU5UX1ZBTFVF"
+def getTemperatureData(request, startDate, endDate, type):
+	startTime = datetime.strptime(startDate, '%Y-%m-%d %H:%M:%S')
+	endTime = datetime.strptime(endDate, '%Y-%m-%d %H:%M:%S')
+	if type == "Supply":
+		tmpURL = "https://128.2.109.159/piwebapi/streams/P0-MYhSMORGkyGTe9bdohw0ACzgAAAV0lOLTYyTlBVMkJWTDIwXFBISVBQU19BSFUtMV9TVVBQTFkgQUlSIFRFTVAuUFJFU0VOVF9WQUxVRQ"
+	elif type == "Fresh":
+		tmpURL = "https://128.2.109.159/piwebapi/streams/P0-MYhSMORGkyGTe9bdohw0AUjgAAAV0lOLTYyTlBVMkJWTDIwXFBISVBQU19BSFUtMSBPQVQgTU9OSVRPUl9PVVRTSURFIEFJUiBURU1QRVJBVFVSRS5QUkVTRU5UX1ZBTFVF"
 	else:
-		tmpURL = "https://128.2.109.159/piwebapi/streams/P0-MYhSMORGkyGTe9bdohw0ARzgAAAV0lOLTYyTlBVMkJWTDIwXFBISVBQU19BSFUtMV9SQSBIVU1JRElUWS5QUkVTRU5UX1ZBTFVF"
+		tmpURL = "https://128.2.109.159/piwebapi/streams/P0-MYhSMORGkyGTe9bdohw0ABzgAAAV0lOLTYyTlBVMkJWTDIwXFBISVBQU19BSFUtMV9SRVRVUk4gQUlSIFRFTVAuUFJFU0VOVF9WQUxVRQ"
 	url = tmpURL + \
-	      '/interpolated?starttime=%s&endtime=%s&interval=10m'%(nowMXhr.isoformat(), now.isoformat())
+	      '/interpolated?starttime=%s&endtime=%s&interval=10m'%(startTime.isoformat(), endTime.isoformat())
 	print (url)
 	r = getFromPi(url);
 	retItems = r['Items'];
@@ -136,14 +138,35 @@ def getHumidityData(request, hours, type):
 	response = {'Items': formedTimeSeries}
 	return JsonResponse(response, json_dumps_params={'indent': 2})
 
-def getFlowRateData(request, hours, type):
-	now = datetime.utcnow();
-	nowMXhr = now - timedelta(hours = hours);
+def getHumidityData(request, startDate, endDate, type):
+	startTime = datetime.strptime(startDate, '%Y-%m-%d %H:%M:%S')
+	endTime = datetime.strptime(endDate, '%Y-%m-%d %H:%M:%S')
+	tmpURL = ""
+	if type == "Fresh":
+		tmpURL = "https://128.2.109.159/piwebapi/streams/P0-MYhSMORGkyGTe9bdohw0AQTgAAAV0lOLTYyTlBVMkJWTDIwXFBISVBQU19BSFUtMV9PQSBIVU1JRElUWS5QUkVTRU5UX1ZBTFVF"
+	elif type == "Returned":
+		tmpURL = "https://128.2.109.159/piwebapi/streams/P0-MYhSMORGkyGTe9bdohw0ARzgAAAV0lOLTYyTlBVMkJWTDIwXFBISVBQU19BSFUtMV9SQSBIVU1JRElUWS5QUkVTRU5UX1ZBTFVF"
+	url = tmpURL + \
+	      '/interpolated?starttime=%s&endtime=%s&interval=10m'%(startTime.isoformat(), endTime.isoformat())
+	print (url)
+	r = getFromPi(url);
+	retItems = r['Items'];
+	formedTimeSeries = [];
+	for retItem in retItems:
+		if retItem["Good"]:
+			formedTimeSeries.append([retItem["Timestamp"], retItem["Value"]]);
+	response = {'Items': formedTimeSeries}
+	return JsonResponse(response, json_dumps_params={'indent': 2})
+
+def getFlowRateData(request, startDate, endDate, type):
+	startTime = datetime.strptime(startDate, '%Y-%m-%d %H:%M:%S')
+	endTime = datetime.strptime(endDate, '%Y-%m-%d %H:%M:%S')
+	tmpURL = ""
 	if type == "Supply":
 		tmpURL = "https://128.2.109.159/piwebapi/streams/P0-MYhSMORGkyGTe9bdohw0AKTgAAAV0lOLTYyTlBVMkJWTDIwXFBISVBQU19BSFUtMV9TVVBQTFkgQUlSRkxPVyBLQ0ZNLlBSRVNFTlRfVkFMVUU"
-	else:
+	elif type == "Fresh":
 		tmpURL = "https://128.2.109.159/piwebapi/streams/P0-MYhSMORGkyGTe9bdohw0AJTgAAAV0lOLTYyTlBVMkJWTDIwXFBISVBQU19BSFUtMV9PVVRTSURFIEFJUkZMT1cgS0NGTS5QUkVTRU5UX1ZBTFVF"
-	url = tmpURL + '/interpolated?starttime=%s&endtime=%s&interval=10m'%(nowMXhr.isoformat(), now.isoformat())
+	url = tmpURL + '/interpolated?starttime=%s&endtime=%s&interval=10m'%(startTime.isoformat(), endTime.isoformat())
 	print (url)
 	r = getFromPi(url);
 	retItems = r['Items'];

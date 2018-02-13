@@ -17,6 +17,7 @@
         ================================================== -->
         <meta name="format-detection" content="telephone=no">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- For better performance, make the viewport size to be 1360 x 780px -->
 
 
         <!-- Template CSS Files
@@ -83,7 +84,8 @@
               $("#realTimeDataContainer-" + id).addClass("active");
             }
 
-            function plotTemperature(hours){
+            function plotTemperature(startDate, endDate){
+              $(".error").remove();
               var title = 'Supply';
               if ($("#realTimeDataContainer-S").hasClass("active")) {
                 title = 'Supply';
@@ -92,7 +94,7 @@
               } else {
                 title = 'Fresh';
               }
-              $.getJSON('getTemperatureData/'+ hours + '/' + title + '/', function (data) {
+              $.getJSON('getTemperatureData/'+ startDate + '/' + endDate + '/' + title + '/', function (data) {
                   data = data.Items;
                   dataForChart = [];
                   for (var i=0; i<data.length; i++){
@@ -108,7 +110,85 @@
                           zoomType: 'x'
                       },
                       title: {
-                          text: 'CSL AHU ' + title + ' Air Temperature Last 48-hours'
+                          text: 'CSL AHU ' + title + ' Air Temperature'
+                      },
+                      subtitle: {
+                          text: document.ontouchstart === undefined ?
+                                  'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+                      },
+                      xAxis: {
+                          type: 'datetime'
+                      },
+                      yAxis: {
+                          title: {
+                              text: 'Temperature (F)'
+                          }
+                      },
+                      legend: {
+                          enabled: false
+                      },
+                      plotOptions: {
+                          area: {
+                              fillColor: {
+                                  linearGradient: {
+                                      x1: 0,
+                                      y1: 0,
+                                      x2: 0,
+                                      y2: 1
+                                  },
+                                  stops: [
+                                      [0, Highcharts.getOptions().colors[0]],
+                                      [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                                  ]
+                              },
+                              marker: {
+                                  radius: 2
+                              },
+                              lineWidth: 1,
+                              states: {
+                                  hover: {
+                                      lineWidth: 1
+                                  }
+                              },
+                              threshold: null
+                          }
+                      },
+                      series: [{
+                          type: 'area',
+                          name: 'Temperature',
+                          data: dataForChart
+                      }]
+                  });
+              });
+            }
+
+            function plotLastHoursTemperature(hours){
+              $(".error").remove();
+              var title = 'Supply';
+              if ($("#realTimeDataContainer-S").hasClass("active")) {
+                title = 'Supply';
+              } else if ($("#realTimeDataContainer-R").hasClass("active")) {
+                title = 'Returned';
+              } else {
+                title = 'Fresh';
+              }
+              $.getJSON('getHourTemperatureData/'+ hours + '/' + title + '/', function (data) {
+                  data = data.Items;
+                  dataForChart = [];
+                  for (var i=0; i<data.length; i++){
+                      data_i = data[i];
+                      thisDataForChart = []
+                      recordedTimeDate = new Date(data_i[0])
+                      thisDataForChart.push(recordedTimeDate.getTime())
+                      thisDataForChart.push(parseFloat(data_i[1]))
+                      dataForChart.push(thisDataForChart);
+                  }
+                  Highcharts.chart('chartContainer', {
+                      chart: {
+                          zoomType: 'x'
+                      },
+                      title: {
+                          text: 'CSL AHU ' + title + ' Air Temperature Last 48 Hours'
                       },
                       subtitle: {
                           text: document.ontouchstart === undefined ?
@@ -159,8 +239,9 @@
                   });
               });
           }
-          plotTemperature(48);
-          function plotHumidity(hours){
+          plotLastHoursTemperature(48);
+          function plotHumidity(startDate, endDate){
+            $(".error").remove();
             var title = 'Supply';
             if ($("#realTimeDataContainer-S").hasClass("active")) {
               title = 'Supply';
@@ -169,7 +250,7 @@
             } else {
               title = 'Returned';
             }
-            $.getJSON('getHumidityData/'+ hours + '/' + title + '/', function (data) {
+            $.getJSON('getHumidityData/'+ startDate + '/' + endDate + '/' + title + '/', function (data) {
                 data = data.Items;
                 dataForChart = [];
                 for (var i=0; i<data.length; i++){
@@ -185,7 +266,7 @@
                         zoomType: 'x'
                     },
                     title: {
-                        text: 'CSL AHU ' + title + ' Air Humidity Last 48-hours'
+                        text: 'CSL AHU ' + title + ' Air Humidity'
                     },
                     subtitle: {
                         text: document.ontouchstart === undefined ?
@@ -236,7 +317,8 @@
                 });
             });
         }
-        function plotFlowRate(hours){
+        function plotFlowRate(startDate, endDate){
+            $(".error").remove();
             var title = 'Supply';
             if ($("#realTimeDataContainer-S").hasClass("active")) {
               title = 'Supply';
@@ -245,7 +327,7 @@
             } else {
               title = 'Returned';
             }
-            $.getJSON('getFlowRateData/'+ hours + '/' + title + '/', function (data) {
+            $.getJSON('getFlowRateData/'+ startDate + '/' + endDate + '/' + title + '/', function (data) {
                 data = data.Items;
                 dataForChart = [];
                 for (var i=0; i<data.length; i++){
@@ -261,7 +343,7 @@
                         zoomType: 'x'
                     },
                     title: {
-                        text: 'CSL AHU ' + title + ' Air Flow Rate Last 48-hours'
+                        text: 'CSL AHU ' + title + ' Air Flow Rate'
                     },
                     subtitle: {
                         text: document.ontouchstart === undefined ?
@@ -272,7 +354,7 @@
                     },
                     yAxis: {
                         title: {
-                            text: 'Percentage (%)'
+                            text: 'Air Flow Rate (CFM)'
                         }
                     },
                     legend: {
@@ -306,7 +388,7 @@
                     },
                     series: [{
                         type: 'area',
-                        name: 'Flow Rate',
+                        name: 'Air Flow Rate',
                         data: dataForChart
                     }]
                 });
@@ -464,18 +546,33 @@
                     <img class="img-responsive" id="hvacImg" src="{% static 'images/mech/mech-AHU-6.jpg' %}" alt="" style="display: none;">
                     <canvas id="viewerCanvas" width="570" height="298"></canvas>
                     <p class="reference">Source: <a href="http://ba.conservatory.org/">http://ba.conservatory.org/</a></p>
-                    <div id="realTimeDataContainer-S" class="arrow-right" onclick="changeState('S'); plotTemperature(48)"></div>
-                    <div id="realTimeDataContainer-F" class="arrow-right active" onclick="changeState('F'); plotTemperature(48)"></div>
-                    <div id="realTimeDataContainer-R" class="arrow-left" onclick="changeState('R'); plotTemperature(48)"></div>
+                    <div id="realTimeDataContainer-S" class="arrow-right" onclick="changeState('S'); plotLastHoursTemperature(48)"></div>
+                    <div id="realTimeDataContainer-F" class="arrow-right active" onclick="changeState('F'); plotLastHoursTemperature(48)"></div>
+                    <div id="realTimeDataContainer-R" class="arrow-left" onclick="changeState('R'); plotLastHoursTemperature(48)"></div>
                     <p>By clicking the arrows of supply air, returned air or fresh air, the data will be showed below.</p>
                 </div>
             </div>
         </div>
         <div class="btn-group" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-primary" onclick="plotTemperature(48)">Temperature</button>
-          <button type="button" class="btn btn-primary" onclick="plotHumidity(48)">Humidity</button>
-          <button type="button" class="btn btn-primary" onclick="plotFlowRate(48)">Flow Rate</button>
+          <button type="button" class="btn btn-primary active" id="tempBtn">Temperature</button>
+          <button type="button" class="btn btn-primary" id="humBtn">Humidity</button>
+          <button type="button" class="btn btn-primary" id="flowBtn">Flow Rate</button>
         </div>
+        <br>
+        <br>
+        <div class="row">
+          <div class="col-md-6" id="timeRange">
+            <label>From:</label>
+            <input type="text" class="form-control" id="from" placeholder="YYYY-MM-DD HH:MM:SS">
+            <label>To:</label>
+            <input type="text" class="form-control" id="to" placeholder="YYYY-MM-DD HH:MM:SS">
+            <br>
+            <button type="button" class="btn btn-info" id="viewDataBtn">View Data</button>
+            <br>
+            <br>
+          </div> 
+        </div>
+        <br>
         <div class="row" id="chartContainer">
 
         </div>
@@ -529,6 +626,55 @@
       movePartS("realTimeDataContainer-S");
       movePartF("realTimeDataContainer-F");
       movePartR("realTimeDataContainer-R");
+      activateBtn();
+      clickViewData();
+    }
+    function activateBtn() {
+      $("#tempBtn").click(function() {
+        $("#humBtn").removeClass("active");
+        $("#flowBtn").removeClass("active");
+        $("#tempBtn").addClass("active");
+      });
+      $("#humBtn").click(function() {
+        $("#tempBtn").removeClass("active");
+        $("#flowBtn").removeClass("active");
+        $("#humBtn").addClass("active");
+      });
+      $("#flowBtn").click(function() {
+        $("#humBtn").removeClass("active");
+        $("#tempBtn").removeClass("active");
+        $("#flowBtn").addClass("active");
+      });
+    }
+    function clickViewData() {
+      $("#viewDataBtn").click(function() {
+        $(".error").remove();
+        var from = $("#from").val();
+        var to = $("#to").val();
+        if (from.length == 0 || to.length == 0) {
+          $('<div/>', {'class': 'error', html: 'Empty input.'}).appendTo($('#timeRange'));
+          return;
+        } else if (from.match(/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/) == null
+            ||to.match(/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/) == null) {
+          $('<div/>', {'class': 'error', html: 'Incorrect input format.'}).appendTo($('#timeRange'));
+          return;
+        }  
+        // Check for the type of data to be viewed
+        if ($("#humBtn").hasClass("active") && $("#realTimeDataContainer-S").hasClass("active")) {
+          $('<div/>', {'class': 'error', html: 'Supply air humidity not available.'}).appendTo($('#timeRange'));
+          return;
+        } else if ($("#flowBtn").hasClass("active") && $("#realTimeDataContainer-R").hasClass("active")) {
+          $('<div/>', {'class': 'error', html: 'Returned air flow rate not available.'}).appendTo($('#timeRange'));
+          return;
+        }
+        if ($("#tempBtn").hasClass("active")) {
+          plotTemperature(from, to);
+        } else if ($("#humBtn").hasClass("active")) {
+          plotHumidity(from, to);
+        } else if ($("#flowBtn").hasClass("active")) {
+          plotFlowRate(from, to);
+        }
+      });
     }
     function getElementXY(e) {
       var x = 0, y = 0;
@@ -564,11 +710,6 @@
       realTimeDataContainerStyle["left"] = (xy.x - 400) + "px";
       realTimeDataContainerStyle["top"] = (xy.y - 340) + "px";
     }
-    $(window).on("load resize scroll",function(e){
-      movePartS("realTimeDataContainer-S");
-      movePartF("realTimeDataContainer-F");
-      movePartR("realTimeDataContainer-R");
-    });
     </script>
  	</body>
 </html>

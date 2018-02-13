@@ -26,7 +26,8 @@ urlpatterns = [
     path('getRealTimeOutdoorAirData/', views.getRealTimeOutdoorAirData),
     path('getRealTimeReturnedAirData/', views.getRealTimeReturnedAirData),
     path('getRealTimeMixedAirData/', views.getRealTimeMixedAirData),
-    path('getTemperatureData/<int:hours>/<str:type>/', views.getTemperatureData),
-    path('getHumidityData/<int:hours>/<str:type>/', views.getHumidityData),
-    path('getFlowRateData/<int:hours>/<str:type>/', views.getFlowRateData),
+    path('getHourTemperatureData/<int:hours>/<str:type>/', views.getHourTemperatureData),
+    path('getTemperatureData/<str:startDate>/<str:endDate>/<str:type>/', views.getTemperatureData),
+    path('getHumidityData/<str:startDate>/<str:endDate>/<str:type>/', views.getHumidityData),
+    path('getFlowRateData/<str:startDate>/<str:endDate>/<str:type>/', views.getFlowRateData),
     ]
